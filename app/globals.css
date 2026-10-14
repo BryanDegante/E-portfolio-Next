@@ -1,20 +1,38 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme inline {
   --font-heading: var(--font-space-grotesk);
   --font-sans: var(--font-plus-jakarta-sans);
+
 }
+
+@theme {
+  --color-primary-blue: #3b82f6;
+  --color-hover: #2563eb;
+  --color-section: #020617;
+  --color-text: #e5e7eb;
+  --color-muted: #9ca3af;
+}
+
+:root{
+  --primary-blue: #3b82f6;
+  --primary-hover: #2563eb;
+  --blue-gradient:linear-gradient(90deg, #3b82f6, #06b6d4);
+}
+
+
 
 /* Global styles */
 html {
   scroll-behavior: smooth;
 }
 
-body {
+body,
+p,
+span {
   font-family: var(--font-plus-jakarta-sans);
 }
 
-/* All headings use Space Grotesk */
 h1,
 h2,
 h3,
@@ -23,3 +41,38 @@ h5,
 h6 {
   font-family: var(--font-space-grotesk);
 }
+
+
+.text__color--purple {
+  font-weight: 800;
+
+  background: linear-gradient(90deg, #8b5cf6, #a78bfa, #8b5cf6, #b794f4);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
+  animation: gradientShift 6s linear infinite;
+}
+
+.text__color--blue {
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #60a5fa, #3b82f6);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: gradientShift 6s linear infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
