@@ -28,7 +28,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className= "bg-section min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

@@ -8,7 +8,8 @@
 
 @theme {
   --color-primary-blue: #3b82f6;
-  --color-hover: #2563eb;
+  --color-primary-hover: #2563eb;
+  --color-secondary-cyan: #06b6d4;
   --color-section: #020617;
   --color-text: #e5e7eb;
   --color-muted: #9ca3af;
@@ -17,6 +18,8 @@
 :root{
   --primary-blue: #3b82f6;
   --primary-hover: #2563eb;
+  --secondary-cyan: #06b6d4;
+  --text:#e5e7eb;
   --blue-gradient:linear-gradient(90deg, #3b82f6, #06b6d4);
 }
 
@@ -75,4 +78,15 @@ h6 {
     background-position: 300% 50%;
   }
 }
+
+section{
+  @apply py-6 px-4 md:px-6 md:py-8;
+}
+
+.row{
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%
+}
+
 
