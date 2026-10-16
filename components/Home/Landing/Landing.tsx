@@ -11,7 +11,7 @@ export default function Landing() {
   const language = useSelector((state: RootState) => state.language.language);
 
   return (
-    <section>
+    <section className='min-h-dvh'>
       <div className='mx-auto flex min-h-[80vh] w-full max-w-200 flex-col items-center justify-center py-12'>
         <div className='flex w-full max-w-150 flex-col items-center gap-6'>
           <div className='flex flex-col items-center gap-5 text-center'>

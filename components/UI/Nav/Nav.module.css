@@ -1,16 +1,20 @@
 .content {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  background: rgba(18, 18, 18, 0.65);
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(180%);
 
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(8, 75, 246, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content:hover {
+  border-color: var(--primary-blue);
+  background: rgba(18, 18, 18, 0.75);
 }

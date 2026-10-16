@@ -72,7 +72,7 @@ export default function Nav() {
           {links.map((link) => (
             <li key={link.id}>
               {link.isModal ? (
-                <ContactButton label={link.label[language]} />
+                <ContactButton />
               ) : (
                 <HoverLink
                   link={link.href ?? '/'}
@@ -97,17 +97,17 @@ export default function Nav() {
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className='flex flex-col gap-1.5 cursor-pointer z-60 md:hidden'>
-          <span className='w-7 h-0.5 bg-text block transition duration-300 ease-in' />
-          <span className='w-7 h-0.5 bg-text block transition duration-300 ease-in' />
-          <span className='w-7 h-0.5 bg-text block transition duration-300 ease-in' />
+          <span className='w-6 h-0.5 bg-text block transition duration-300 ease-in' />
+          <span className='w-6 h-0.5 bg-text block transition duration-300 ease-in' />
+          <span className='w-6 h-0.5 bg-text block transition duration-300 ease-in' />
         </button>
+      </div>
 
         <NavModal
           navLinks={links}
           isOpen={isMenuOpen}
           onClose={() => setIsMenuOpen(false)}
         />
-      </div>
     </nav>
   );
 }

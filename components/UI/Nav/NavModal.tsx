@@ -1,3 +1,4 @@
+
 'use client';
 
 import HoverLink from '../HoverLink/HoverLink';
@@ -7,7 +8,7 @@ import LanguageSwitcher from '../Language Switcher/LanguageSwitcher';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store';
+import type { RootState } from '@/redux/store';
 
 type NavModalProps = {
   navLinks: NavLink[];
@@ -22,7 +23,9 @@ export default function NavModal({
 }: NavModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<(HTMLLIElement | null)[]>([]);
-  const language = useSelector((state: RootState) => state.language.language);
+  const language = useSelector(
+    (state: RootState) => state.language.language
+  );
 
   useEffect(() => {
     const modal = modalRef.current;
@@ -68,7 +71,7 @@ export default function NavModal({
     <div className="fixed inset-0 z-60 flex justify-end bg-[rgba(0,0,0,0.43)] backdrop-blur-lg">
       <div
         ref={modalRef}
-        className="flex h-full w-[85%] max-w-95 flex-col justify-between border-l border-l-[rgba(255,255,255,0.08)] bg-section p-8 backdrop-blur-[20px]"
+        className="flex h-full w-[85%] max-w-95 flex-col justify-between border-l border-l-[rgba(59,130,246,0.2)] bg-[rgba(2,6,23,0.82)] p-8 backdrop-blur-xl"
       >
         <div className="mb-10 flex items-center justify-between">
           <p className="text-xs uppercase tracking-[2px] text-text">
@@ -95,12 +98,11 @@ export default function NavModal({
               className="navModal-item"
             >
               {link.isModal ? (
-                <ContactButton label={link.label[language]} />
+                <ContactButton />
               ) : (
                 <HoverLink
                   link={link.href ?? '/'}
-            onClose={onClose}
-
+                  onClose={onClose}
                   label={link.label[language]}
                   css="text-left text-xl font-medium text-text"
                 />
@@ -109,7 +111,7 @@ export default function NavModal({
           ))}
         </ul>
 
-        <LanguageSwitcher onClick={onClose}/>
+        <LanguageSwitcher onClick={onClose} />
 
         <div className="text-sm text-muted">
           <p>© {new Date().getFullYear()} Portfolio</p>

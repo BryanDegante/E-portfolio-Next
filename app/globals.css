@@ -89,6 +89,10 @@ section{
   width: 100%
 }
 
+.container{
+  @apply py-15 px-4 md:py-20 md:px-6 lg:py-24 lg:px-9;
+}
+
 .close-btn {
   background: none;
   border: none;
