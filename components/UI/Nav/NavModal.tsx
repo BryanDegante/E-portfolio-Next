@@ -6,6 +6,8 @@ import type { NavLink } from '@/data/navLinks';
 import LanguageSwitcher from '../Language Switcher/LanguageSwitcher';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 
 type NavModalProps = {
   navLinks: NavLink[];
@@ -20,6 +22,7 @@ export default function NavModal({
 }: NavModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<(HTMLLIElement | null)[]>([]);
+  const language = useSelector((state: RootState) => state.language.language);
 
   useEffect(() => {
     const modal = modalRef.current;
@@ -92,11 +95,13 @@ export default function NavModal({
               className="navModal-item"
             >
               {link.isModal ? (
-                <ContactButton label={link.label.en} />
+                <ContactButton label={link.label[language]} />
               ) : (
                 <HoverLink
                   link={link.href ?? '/'}
-                  label={link.label.en}
+            onClose={onClose}
+
+                  label={link.label[language]}
                   css="text-left text-xl font-medium text-text"
                 />
               )}
@@ -104,7 +109,7 @@ export default function NavModal({
           ))}
         </ul>
 
-        <LanguageSwitcher />
+        <LanguageSwitcher onClick={onClose}/>
 
         <div className="text-sm text-muted">
           <p>© {new Date().getFullYear()} Portfolio</p>
