@@ -3,6 +3,7 @@ import { Space_Grotesk, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/UI/Nav/Nav';
 import ReduxProvider from '@/redux/Provider';
+import Particles from '@/components/Particles/Particles';
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
@@ -31,6 +32,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} h-full antialiased`}>
       <body className='bg-section min-h-full flex flex-col'>
         <ReduxProvider>
+          <Particles particleCount={700} color={'#E5E7EB'} />
           <Nav />
           {children}
         </ReduxProvider>
