@@ -17,6 +17,7 @@ export default function ContactButton({
     <button
       type={type}
       className={`
+        cursor-pointer
         group inline-flex h-11.25 items-center justify-center gap-2
         rounded-full border border-transparent
         bg-linear-to-br from-primary-blue to-secondary-cyan
