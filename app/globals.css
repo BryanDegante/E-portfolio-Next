@@ -13,12 +13,14 @@
   --color-section: #020617;
   --color-text: #e5e7eb;
   --color-muted: #9ca3af;
+  --color-card: #1717177e;
 }
 
 :root{
   --primary-blue: #3b82f6;
   --primary-hover: #2563eb;
   --secondary-cyan: #06b6d4;
+  --card: #1717177e;
   --text:#e5e7eb;
   --blue-gradient:linear-gradient(90deg, #3b82f6, #06b6d4);
 }

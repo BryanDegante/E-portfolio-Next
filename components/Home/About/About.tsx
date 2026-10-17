@@ -177,7 +177,7 @@ export default function About() {
           {HIGHLIGHTS.map((item) => (
             <div
               key={item.number}
-              className="about-animate group rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 transition-all duration-300 hover:border-neutral-700 hover:bg-neutral-900/90"
+              className="about-animate group rounded-2xl border border-neutral-800 bg-card p-6 transition-all duration-300 hover:border-neutral-700 hover:bg-neutral-900/90"
             >
               <div className="mb-2 flex items-center justify-between gap-4">
                 <h3 className="font-heading text-base font-semibold text-white transition-colors group-hover:text-primary-blue">
