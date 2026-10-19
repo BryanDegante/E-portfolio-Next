@@ -7,7 +7,7 @@ export default function Projects() {
     <section id="Projects" className="min-h-dvh">
       <div className="relative mx-auto max-w-5xl border-t border-neutral-900 px-6 py-28">
         <div className="mb-3 inline-flex items-center gap-2">
-          <span className="font-mono text-xs uppercase tracking-widest text-blue-400">
+          <span className="font-mono text-xs uppercase tracking-widest text-cyan-400">
             02 // PROJECTS
           </span>
         </div>
