@@ -13,7 +13,11 @@ type RingCardProps = {
   opacity: number;
   zIndex: number;
   isFront: boolean;
+  isHovered: boolean;
+  isSelected: boolean;
   url: string;
+  onCardHover: (hovered: boolean) => void;
+  onCardClick: () => void;
 };
 
 export default function RingCard({
@@ -26,29 +30,39 @@ export default function RingCard({
   opacity,
   zIndex,
   isFront,
+  isHovered,
+  isSelected,
   url,
+  onCardHover,
+  onCardClick,
 }: RingCardProps) {
   const angle = index * angleStep;
+  const isActive = isFront || isHovered || isSelected;
 
   return (
     <article
+      onPointerEnter={() => onCardHover(true)}
+      onPointerLeave={() => onCardHover(false)}
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest('a')) return;
+        onCardClick();
+        }}
       style={{
         transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px) scale(${scale})`,
         opacity,
-        zIndex,
+        zIndex: isActive ? zIndex + 100 : zIndex,
       }}
       className={`
         group absolute left-1/2 top-1/2
         flex h-60 w-48 flex-col overflow-hidden
         rounded-2xl border bg-neutral-950
-        shadow-[0_18px_50px_rgba(0,0,0,0.4)]
         transition-[border-color,box-shadow]
         duration-300
         sm:h-72 sm:w-56
         ${
-          isFront
-            ? 'border-blue-400/60 shadow-[0_18px_50px_rgba(59,130,246,0.16)]'
-            : 'border-white/10'
+          isActive
+            ? 'border-blue-400/60 shadow-[0_18px_50px_rgba(59,130,246,0.2)]'
+            : 'border-white/10 shadow-[0_18px_50px_rgba(0,0,0,0.4)]'
         }
       `}
     >
@@ -79,15 +93,15 @@ export default function RingCard({
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          tabIndex={isFront ? 0 : -1}
+          tabIndex={isActive ? 0 : -1}
           aria-label={`Visit ${title} website`}
           className={`
             inline-flex w-fit items-center gap-2 rounded-full
             border px-3 py-1.5 font-mono text-xs
-            transition-colors duration-200
+            transition-all duration-200
             ${
-              isFront
-                ? 'border-blue-400/30 bg-blue-400/10 text-blue-300 hover:bg-blue-400/20'
+              isActive
+                ? 'pointer-events-auto border-blue-400/30 bg-blue-400/10 text-blue-300 opacity-100 hover:bg-blue-400/20'
                 : 'pointer-events-none border-transparent text-neutral-500 opacity-0'
             }
           `}
@@ -98,3 +112,4 @@ export default function RingCard({
     </article>
   );
 }
+  

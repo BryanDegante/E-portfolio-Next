@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Projects() {
   return (
-    <section id="projects" className="min-h-dvh">
+    <section id="Projects" className="min-h-dvh">
       <div className="relative mx-auto max-w-5xl border-t border-neutral-900 px-6 py-28">
         <div className="mb-3 inline-flex items-center gap-2">
           <span className="font-mono text-xs uppercase tracking-widest text-blue-400">

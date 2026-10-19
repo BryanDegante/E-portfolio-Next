@@ -133,13 +133,13 @@ export default function About() {
   return (
     <section
       ref={containerRef}
-      id="about"
+      id="About"
       className="relative mx-auto max-w-5xl border-t border-neutral-900 px-6 py-28"
     >
       <div className="about-animate mb-3 inline-flex items-center gap-2">
         <span className="font-mono text-xs uppercase tracking-widest text-cyan-400">
           {content.label}
-        </span>
+        </span> 
       </div>
 
       <h2 className="about-animate mb-12 max-w-3xl font-heading text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
