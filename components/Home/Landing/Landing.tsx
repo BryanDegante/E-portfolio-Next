@@ -9,7 +9,6 @@ import ContactButton from '@/components/UI/Contact/ContactButton';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 
-// Register GSAP plugin safely for Next.js App Router
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(useGSAP);
 }

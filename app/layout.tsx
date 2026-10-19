@@ -6,6 +6,7 @@ import ReduxProvider from '@/redux/Provider';
 import Particles from '@/components/Particles/Particles';
 import ContactModal from '@/components/UI/Contact/ContactModal';
 import Footer from '@/components/UI/Footer/Footer';
+import LoadingScreen from '@/components/UI/LoadingScreen/LoadingScreen';
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
@@ -34,10 +35,11 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} h-full antialiased`}>
       <body className='bg-section min-h-full flex flex-col'>
         <ReduxProvider>
+        <LoadingScreen />
           <ContactModal />
           <Particles particleCount={700} color={'#E5E7EB'} />
           <Nav />
-          {children}\
+          {children}
           <Footer />
         </ReduxProvider>
       </body>
