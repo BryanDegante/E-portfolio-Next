@@ -8,9 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import type { RootState } from '@/redux/store';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function Service() {
   const language = useSelector(
@@ -22,44 +20,88 @@ export default function Service() {
 
   useGSAP(
     () => {
+      const section = sectionRef.current;
+
+      if (!section) return;
+
+      const tag = section.querySelector('.gsap-tag');
+      const title = section.querySelector('.gsap-title');
+      const description = section.querySelector('.gsap-desc');
+      const cards = section.querySelectorAll('.gsap-card');
+      const footer = section.querySelector('.gsap-footer');
+
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: section,
           start: 'top 75%',
           toggleActions: 'play none none none',
         },
-        defaults: { ease: 'power3.out', duration: 0.9 },
+        defaults: {
+          ease: 'power3.out',
+          duration: 0.8,
+        },
       });
 
-      tl.fromTo(
-        '.gsap-tag',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0 }
-      )
-        .fromTo(
-          '.gsap-title',
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0 },
-          '-=0.6'
-        )
-        .fromTo(
-          '.gsap-desc',
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0 },
-          '-=0.6'
-        )
-        .fromTo(
-          '.gsap-card',
-          { opacity: 0, y: 35 },
-          { opacity: 1, y: 0, stagger: 0.15 },
-          '-=0.5'
-        )
-        .fromTo(
-          '.gsap-footer',
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0 },
-          '-=0.6'
+      if (tag) {
+        tl.fromTo(
+          tag,
+          { opacity: 0, x: -20 },
+          { opacity: 1, x: 0 }
         );
+      }
+
+      if (title) {
+        tl.fromTo(
+          title,
+          {
+            opacity: 0,
+            y: 25,
+            filter: 'blur(8px)',
+          },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 1,
+          },
+          '-=0.45'
+        );
+      }
+
+      if (description) {
+        tl.fromTo(
+          description,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.75 },
+          '-=0.55'
+        );
+      }
+
+      if (cards.length > 0) {
+        cards.forEach((card, index) => {
+          const isWideCard = index === 2;
+
+          tl.fromTo(
+            card,
+            isWideCard
+              ? { opacity: 0, x: 35 }
+              : { opacity: 0, y: 35 },
+            isWideCard
+              ? { opacity: 1, x: 0, duration: 0.8 }
+              : { opacity: 1, y: 0, duration: 0.8 },
+            index === 0 ? '-=0.2' : '-=0.5'
+          );
+        });
+      }
+
+      if (footer) {
+        tl.fromTo(
+          footer,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.65 },
+          '-=0.3'
+        );
+      }
     },
     { scope: sectionRef }
   );
@@ -72,14 +114,14 @@ export default function Service() {
     >
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <div className="mb-12 border-t border-white/10 pt-8 sm:mb-16">
-          <div className="gsap-tag mb-5 flex items-center gap-3 opacity-0">
+          <div className="gsap-tag mb-5 flex items-center gap-3">
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-blue-400">
               03 // {isEn ? 'Services' : 'Servicios'}
             </span>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-            <h2 className="gsap-title max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight text-white opacity-0 sm:text-4xl lg:text-5xl xl:text-6xl">
+            <h2 className="gsap-title max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl xl:text-6xl">
               {isEn
                 ? 'Websites That Work for '
                 : 'Sitios Web que Impulsan '}
@@ -88,7 +130,7 @@ export default function Service() {
               </span>
             </h2>
 
-            <p className="gsap-desc max-w-xl font-sans text-base leading-7 text-neutral-400 opacity-0 sm:text-lg lg:justify-self-end">
+            <p className="gsap-desc max-w-xl font-sans text-base leading-7 text-neutral-400 sm:text-lg lg:justify-self-end">
               {isEn
                 ? 'Whether you need a professional website, improvements to your existing site, or new features to better serve your customers, I build solutions around your business goals.'
                 : 'Ya sea que necesites un sitio web profesional, mejorar tu sitio actual o agregar funciones para atender mejor a tus clientes, desarrollo soluciones enfocadas en los objetivos de tu negocio.'}
@@ -97,7 +139,7 @@ export default function Service() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <article className="gsap-card group relative isolate flex min-h-85 flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 p-6 opacity-0 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:shadow-[0_20px_60px_-25px_rgba(59,130,246,0.18)] sm:p-8 md:col-span-2">
+          <article className="gsap-card group relative isolate flex min-h-85 flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:shadow-[0_20px_60px_-25px_rgba(59,130,246,0.18)] sm:p-8 md:col-span-2">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-blue-500/10 blur-[90px] transition-colors duration-500 group-hover:bg-blue-400/20"
@@ -106,8 +148,11 @@ export default function Service() {
             <div>
               <div className="mb-7 flex items-center justify-between gap-4">
                 <span className="rounded-full border border-blue-400/20 bg-blue-400/10 px-3 py-1.5 font-mono text-[10px] tracking-wider text-blue-300 sm:text-xs">
-                  {isEn ? 'BUILD YOUR ONLINE PRESENCE' : 'IMPULSA TU PRESENCIA DIGITAL'}
+                  {isEn
+                    ? 'BUILD YOUR ONLINE PRESENCE'
+                    : 'IMPULSA TU PRESENCIA DIGITAL'}
                 </span>
+
                 <span className="font-mono text-sm text-neutral-600">
                   01
                 </span>
@@ -128,7 +173,11 @@ export default function Service() {
               {(
                 isEn
                   ? ['Professional Design', 'Mobile-Friendly', 'Contact Forms']
-                  : ['Diseño Profesional', 'Adaptable a Móviles', 'Formularios de Contacto']
+                  : [
+                      'Diseño Profesional',
+                      'Adaptable a Móviles',
+                      'Formularios de Contacto',
+                    ]
               ).map((item) => (
                 <span
                   key={item}
@@ -140,7 +189,7 @@ export default function Service() {
             </div>
           </article>
 
-          <article className="gsap-card group relative isolate flex min-h-80 flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 p-6 opacity-0 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:shadow-[0_20px_60px_-25px_rgba(59,130,246,0.18)] sm:p-8">
+          <article className="gsap-card group relative isolate flex min-h-80 flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:shadow-[0_20px_60px_-25px_rgba(59,130,246,0.18)] sm:p-8">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute -bottom-20 -left-20 -z-10 h-56 w-56 rounded-full bg-blue-500/10 blur-[80px] transition-colors duration-500 group-hover:bg-blue-500/20"
@@ -151,6 +200,7 @@ export default function Service() {
                 <span className="rounded-full border border-blue-400/20 bg-blue-400/10 px-3 py-1.5 font-mono text-[10px] tracking-wider text-blue-300 sm:text-xs">
                   {isEn ? 'GIVE YOUR SITE A REFRESH' : 'RENUEVA TU SITIO WEB'}
                 </span>
+
                 <span className="font-mono text-sm text-neutral-600">
                   02
                 </span>
@@ -183,7 +233,7 @@ export default function Service() {
             </div>
           </article>
 
-          <article className="gsap-card group relative isolate flex flex-col gap-8 overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 p-6 opacity-0 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/30 sm:p-8 md:col-span-3 md:flex-row md:items-center md:justify-between">
+          <article className="gsap-card group relative isolate flex flex-col gap-8 overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/60 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/30 sm:p-8 md:col-span-3 md:flex-row md:items-center md:justify-between">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute -right-16 -top-32 -z-10 h-64 w-64 rounded-full bg-indigo-500/[0.07] blur-[90px] transition-colors duration-500 group-hover:bg-blue-500/10"
@@ -192,8 +242,11 @@ export default function Service() {
             <div className="relative max-w-2xl">
               <div className="mb-5 flex items-center gap-3">
                 <span className="rounded-full border border-white/10 bg-white/4 px-3 py-1.5 font-mono text-[10px] tracking-wider text-neutral-300 sm:text-xs">
-                  {isEn ? 'MAKE YOUR WEBSITE DO MORE' : 'SACA MÁS PROVECHO A TU SITIO'}
+                  {isEn
+                    ? 'MAKE YOUR WEBSITE DO MORE'
+                    : 'SACA MÁS PROVECHO A TU SITIO'}
                 </span>
+
                 <span className="font-mono text-sm text-neutral-600">
                   03
                 </span>
@@ -214,8 +267,16 @@ export default function Service() {
               <div className="mt-6 flex flex-wrap gap-2">
                 {(
                   isEn
-                    ? ['Interactive Features', 'Forms & Integrations', 'Custom Improvements']
-                    : ['Funciones Interactivas', 'Formularios e Integraciones', 'Mejoras a Medida']
+                    ? [
+                        'Interactive Features',
+                        'Forms & Integrations',
+                        'Custom Improvements',
+                      ]
+                    : [
+                        'Funciones Interactivas',
+                        'Formularios e Integraciones',
+                        'Mejoras a Medida',
+                      ]
                 ).map((item) => (
                   <span
                     key={item}
@@ -242,6 +303,7 @@ export default function Service() {
               "
             >
               {isEn ? 'Explore All Services' : 'Ver Todos los Servicios'}
+
               <span
                 aria-hidden="true"
                 className="inline-block transition-transform duration-300 group-hover:translate-x-1"
@@ -252,7 +314,7 @@ export default function Service() {
           </article>
         </div>
 
-        <div className="gsap-footer mt-8 flex flex-col gap-2 border-t border-white/6 pt-5 opacity-0 sm:flex-row sm:items-center sm:justify-between">
+        <div className="gsap-footer mt-8 flex flex-col gap-2 border-t border-white/6 pt-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-[11px] tracking-wide text-neutral-500">
             {isEn
               ? 'YOUR BUSINESS. YOUR GOALS. BUILT FOR YOU.'
@@ -260,7 +322,9 @@ export default function Service() {
           </p>
 
           <span className="font-mono text-[11px] text-neutral-600">
-            {isEn ? 'Websites Built Around Your Needs' : 'Sitios Web Adaptados a Tus Necesidades'}
+            {isEn
+              ? 'Websites Built Around Your Needs'
+              : 'Sitios Web Adaptados a Tus Necesidades'}
           </span>
         </div>
       </div>

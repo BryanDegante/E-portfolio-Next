@@ -22,31 +22,70 @@ export default function Landing() {
   useGSAP(
     () => {
       const tl = gsap.timeline({
-        defaults: { ease: 'power3.out', duration: 1 },
+        defaults: {
+          ease: 'power3.out',
+          duration: 0.9,
+        },
       });
 
       tl.fromTo(
         '.gsap-title',
-        { opacity: 0, y: 35 },
-        { opacity: 1, y: 0, delay: 0.1 }
+        {
+          opacity: 0,
+          y: 40,
+          filter: 'blur(8px)',
+        },
+        {
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          duration: 1.1,
+          delay: 0.15,
+        }
       )
         .fromTo(
           '.gsap-role',
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0 },
-          '-=0.75'
+          {
+            opacity: 0,
+            y: 25,
+            filter: 'blur(5px)',
+          },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+          },
+          '-=0.65'
         )
         .fromTo(
           '.gsap-desc',
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0 },
-          '-=0.75'
+          {
+            opacity: 0,
+            y: 18,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+          },
+          '-=0.5'
         )
         .fromTo(
           '.gsap-actions li',
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, stagger: 0.12 },
-          '-=0.6'
+          {
+            opacity: 0,
+            y: 16,
+            scale: 0.96,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.65,
+            stagger: 0.14,
+            clearProps: 'transform',
+          },
+          '-=0.35'
         );
     },
     { scope: containerRef }
@@ -81,7 +120,7 @@ export default function Landing() {
             </p>
           </div>
 
-          <ul className="gsap-actions flex flex-wrap items-center justify-center gap-3 list-none">
+          <ul className="gsap-actions flex list-none flex-wrap items-center justify-center gap-3">
             <li className="opacity-0">
               <ExpandLink
                 text="GitHub"

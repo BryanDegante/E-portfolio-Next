@@ -19,9 +19,37 @@ export default function Nav() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navRef = useRef<HTMLElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+
   const language = useSelector((state: RootState) => state.language.language);
 
+  // Navbar entrance animation
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        nav,
+        {
+          y: -24,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          clearProps: 'transform,opacity',
+        },
+      );
+    }, nav);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Hamburger animation
   useEffect(() => {
     const hamburger = hamburgerRef.current;
     if (!hamburger) return;
@@ -62,7 +90,10 @@ export default function Nav() {
         : navLinks.home;
 
   return (
-    <nav className="fixed left-0 top-5 z-50 w-full px-4 sm:px-6">
+    <nav
+      ref={navRef}
+      className="fixed left-0 top-5 z-50 w-full px-4 sm:px-6"
+    >
       <div
         className={`mx-auto flex w-full max-w-275 items-center justify-between gap-4 rounded-[18px] px-5 py-3.5 sm:px-7 ${styles.content}`}
       >

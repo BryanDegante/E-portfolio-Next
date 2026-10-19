@@ -1,11 +1,11 @@
-
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store';
+import type { RootState } from '@/redux/store';
 
 interface HighlightCard {
   number: string;
@@ -82,8 +82,7 @@ const CONTENT = {
     paragraphOneHighlight: 'experiencias web funcionales e intuitivas',
     paragraphOneEnd:
       '. Me enfoco en crear interfaces atractivas, adaptables a distintos dispositivos y fáciles de usar.',
-    paragraphTwoStart:
-      'Me gusta transformar diseños en ',
+    paragraphTwoStart: 'Me gusta transformar diseños en ',
     paragraphTwoHighlight: 'aplicaciones funcionales',
     paragraphTwoEnd:
       ', prestando atención tanto a los detalles visuales como al funcionamiento de cada experiencia. Siempre busco mejorar mi código, la usabilidad y la forma en que las personas interactúan con una aplicación.',
@@ -94,41 +93,123 @@ const CONTENT = {
   },
 };
 
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
 export default function About() {
   const containerRef = useRef<HTMLElement>(null);
+
   const language = useSelector(
     (state: RootState) => state.language.language
   );
 
   const content = CONTENT[language];
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  useGSAP(
+    () => {
+      const container = containerRef.current;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.about-animate',
-        {
-          y: 25,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
+      if (!container) return;
+
+      const label = container.querySelector('.about-label');
+      const heading = container.querySelector('.about-heading');
+      const paragraphs = container.querySelectorAll('.about-paragraph');
+      const cards = container.querySelectorAll('.about-card');
+
+      // Animate the section label.
+      if (label) {
+        gsap.fromTo(
+          label,
+          {
+            opacity: 0,
+            x: -20,
           },
-        }
-      );
-    }, containerRef);
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: container,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
 
-    return () => ctx.revert();
-  }, []);
+      // Reveal the heading with a subtle blur effect.
+      if (heading) {
+        gsap.fromTo(
+          heading,
+          {
+            opacity: 0,
+            y: 25,
+            filter: 'blur(8px)',
+          },
+          {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 1,
+            delay: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: container,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+
+      // Reveal paragraphs in sequence.
+      if (paragraphs.length > 0) {
+        gsap.fromTo(
+          paragraphs,
+          {
+            opacity: 0,
+            y: 22,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.75,
+            stagger: 0.16,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: paragraphs[0],
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+
+      // Slide the highlight cards in from the right.
+      if (cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          {
+            opacity: 0,
+            x: 30,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            stagger: 0.18,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: cards[0],
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+    },
+    { scope: containerRef }
+  );
 
   return (
     <section
@@ -136,19 +217,19 @@ export default function About() {
       id="About"
       className="relative mx-auto max-w-5xl border-t border-neutral-900 px-6 py-28"
     >
-      <div className="about-animate mb-3 inline-flex items-center gap-2">
+      <div className="about-label mb-3 inline-flex items-center gap-2">
         <span className="font-mono text-xs uppercase tracking-widest text-cyan-400">
           {content.label}
-        </span> 
+        </span>
       </div>
 
-      <h2 className="about-animate mb-12 max-w-3xl font-heading text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
+      <h2 className="about-heading mb-12 max-w-3xl font-heading text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
         {content.heading}
       </h2>
 
       <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
         <div className="space-y-6 font-body text-base leading-relaxed text-neutral-300 sm:text-lg lg:col-span-7">
-          <p className="about-animate">
+          <p className="about-paragraph">
             {content.paragraphOneStart}
             <span className="text__color--blue font-semibold">
               {content.paragraphOneHighlight}
@@ -156,7 +237,7 @@ export default function About() {
             {content.paragraphOneEnd}
           </p>
 
-          <p className="about-animate">
+          <p className="about-paragraph">
             {content.paragraphTwoStart}
             <span className="text__color--blue font-semibold">
               {content.paragraphTwoHighlight}
@@ -164,7 +245,7 @@ export default function About() {
             {content.paragraphTwoEnd}
           </p>
 
-          <p className="about-animate text-neutral-400">
+          <p className="about-paragraph text-neutral-400">
             {content.paragraphThreeStart}
             <span className="text__color--blue font-semibold">
               {content.paragraphThreeHighlight}
@@ -177,7 +258,7 @@ export default function About() {
           {HIGHLIGHTS.map((item) => (
             <div
               key={item.number}
-              className="about-animate group rounded-2xl border border-neutral-800 bg-card p-6 transition-all duration-300 hover:border-neutral-700 hover:bg-neutral-900/90"
+              className="about-card group rounded-2xl border border-neutral-800 bg-card p-6 transition-colors duration-300 hover:border-neutral-700 hover:bg-neutral-900/90"
             >
               <div className="mb-2 flex items-center justify-between gap-4">
                 <h3 className="font-heading text-base font-semibold text-white transition-colors group-hover:text-primary-blue">
