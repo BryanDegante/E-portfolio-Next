@@ -1,4 +1,5 @@
 export type Project ={
+	id: number; 
  name: {
   en: string;
   es: string;
@@ -15,6 +16,7 @@ export type Project ={
 
 export const ProjectsData: Project[] = [
 	{
+		id: 1, 
 		name: {
 			en: 'EC 5 Star Transports',
 			es: 'EC 5 Star Transports',
@@ -30,6 +32,7 @@ export const ProjectsData: Project[] = [
 	},
 
 	{
+		id: 2, 
 		name: {
 			en: 'Movie Site',
 			es: 'Sitio de Películas',
@@ -41,15 +44,16 @@ export const ProjectsData: Project[] = [
 			en: 'A React-based movie and TV search platform integrated with the TMDB API, utilizing React Router for dynamic page navigation, state management for real-time search results and loading states, and embedded trailer playback. Designed with custom CSS for a clean, cinematic user experience.',
 			es: 'Una plataforma de búsqueda de películas y series creada con React e integrada con la API de TMDB. Utiliza React Router para la navegación dinámica, gestión de estado para resultados de búsqueda en tiempo real y estados de carga, además de reproducción de comerciales. Diseñada con CSS personalizado para ofrecer una experiencia limpia y cinematográfica.',
 		},
-		featured: false,
+		featured: true,
 	},
 
 	{
+		id: 3, 
 		name: {
 			en: 'Awwards Website Clone',
 			es: 'Clon de Sitio Web de Awwards',
 		},
-		screenshot: 'assets/Awwards.png',
+		screenshot: '/assets/Awwards.png',
 		website: 'https://bryandegante.github.io/Awwards-Website-Clone/',
 		tech: ['JavaScript', 'GSAP', 'React', 'Tailwind Css', 'GitHub'],
 		description: {
@@ -60,11 +64,12 @@ export const ProjectsData: Project[] = [
 	},
 
 	{
+		id: 4, 
 		name: {
 			en: 'GSAP MacBook Site Clone',
 			es: 'Clon de Sitio MacBook con GSAP',
 		},
-		screenshot: 'assets/Macbook.png',
+		screenshot: '/assets/Macbook.png',
 		website: 'https://gsap-macbook-site.vercel.app/',
 		tech: ['JavaScript', 'GSAP', 'React', 'Tailwind Css', 'Vercel'],
 		description: {
@@ -74,11 +79,12 @@ export const ProjectsData: Project[] = [
 		featured: false,
 	},
 	{
+		id: 5, 
 		name: {
 			en: 'Summarist Project',
 			es: 'Proyecto Summarist'
 		}, 
-		screenshot: 'assets/summarist.png',
+		screenshot: '/assets/summarist.png',
 		website: 'https://bryan-virtual-internship-v2.vercel.app/',
 		tech:['Typescript', 'Tailwind Css', 'Vercel', 'Redux', 'Next','Firebase'],
 		description: {
@@ -88,11 +94,12 @@ export const ProjectsData: Project[] = [
 		featured: true,
 	},
 	{
+		id: 6, 
 		name: {
 			en: 'All Glass N Mirror',
 			es: 'All Glass N Mirror'
 		}, 
-		screenshot: 'assets/glass.png',
+		screenshot: '/assets/glass.png',
 		website: 'https://www.allglasssnmirror.com/',
 		tech:['Javascript', 'Css', 'Vercel', 'React', 'Vite','GSAP'],
 		description: {
