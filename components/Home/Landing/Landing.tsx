@@ -1,60 +1,105 @@
 'use client';
 
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import ExpandLink from '@/components/UI/Expand Button/ExpandLink';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import ContactButton from '@/components/UI/Contact/ContactButton';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 
-export default function Landing() {
+// Register GSAP plugin safely for Next.js App Router
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(useGSAP);
+}
 
+export default function Landing() {
   const language = useSelector((state: RootState) => state.language.language);
+  const isEn = language === 'en';
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        defaults: { ease: 'power3.out', duration: 1 },
+      });
+
+      tl.fromTo(
+        '.gsap-title',
+        { opacity: 0, y: 35 },
+        { opacity: 1, y: 0, delay: 0.1 }
+      )
+        .fromTo(
+          '.gsap-role',
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0 },
+          '-=0.75'
+        )
+        .fromTo(
+          '.gsap-desc',
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0 },
+          '-=0.75'
+        )
+        .fromTo(
+          '.gsap-actions li',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, stagger: 0.12 },
+          '-=0.6'
+        );
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <section className='min-h-dvh'>
-      <div className='mx-auto flex min-h-[80vh] w-full max-w-200 flex-col items-center justify-center py-12'>
-        <div className='flex w-full max-w-150 flex-col items-center gap-6'>
-          <div className='flex flex-col items-center gap-5 text-center'>
-            <h1 className='text-text font-bold text-5xl md:text-[56px] lg:text-6xl leading-tight'>
-             {language === 'en'
-								? "I'm Bryan Degante"
-								: 'Soy Bryan Degante'}
+    <section className="flex min-h-dvh flex-col justify-center">
+      <div
+        ref={containerRef}
+        className="mx-auto flex min-h-[80vh] w-full max-w-200 flex-col items-center justify-center px-5 py-12"
+      >
+        <div className="flex w-full max-w-160 flex-col items-center gap-8">
+          <div className="flex flex-col items-center gap-4 text-center">
+            <h1 className="gsap-title font-heading text-4xl font-bold leading-tight tracking-tight text-white opacity-0 sm:text-5xl md:text-6xl lg:text-7xl">
+              {isEn ? "I'm Bryan Degante" : 'Soy Bryan Degante'}
             </h1>
-            <h2 className='text-text leading-tight font-semibold text-3xl md:text-4xl'>
-             {language === 'en'
-								? 'A Frontend Developer'
-								: 'Desarrollador Frontend'}
-							<br />
-							{language === 'en'
-								? 'Focused on clean UI & Smooth Animations'
-								: 'Enfocado en interfaces limpias y animaciones fluidas'}
+
+            <h2 className="gsap-role font-heading text-2xl font-semibold leading-tight text-neutral-200 opacity-0 sm:text-3xl md:text-4xl">
+              {isEn ? 'A Frontend Developer' : 'Desarrollador Frontend'}
+              <br />
+              <span className="text__color--blue">
+                {isEn
+                  ? 'Focused on Clean UI & Smooth Animations'
+                  : 'Enfocado en Interfaces Limpias y Animaciones Fluidas'}
+              </span>
             </h2>
-            <h3 className='text-text font-normal leading-tight text-xl lg:text-2xl '>
-             {language === 'en'
-								? 'Building responsive interfaces with modern web technologies.'
-								: 'Creo interfaces responsivas con tecnologías modernas.'}
-            </h3>
+
+            <p className="gsap-desc mt-2 max-w-lg font-heading text-base font-normal leading-relaxed text-neutral-400 opacity-0 sm:text-lg lg:text-xl">
+              {isEn
+                ? 'Building responsive interfaces with modern web technologies.'
+                : 'Creo interfaces responsivas con tecnologías modernas.'}
+            </p>
           </div>
-          <ul className='flex flex-wrap items-center justify-center gap-3 list-none'>
-            <li>
+
+          <ul className="gsap-actions flex flex-wrap items-center justify-center gap-3 list-none">
+            <li className="opacity-0">
               <ExpandLink
-                text='GitHub'
-                icon={<FaGithub className='text-sm text-text sm:text-base' />}
-                link='https://github.com/BryanDegante'
-                newPage={true}
+                text="GitHub"
+                icon={<FaGithub className="text-sm text-text sm:text-base" />}
+                link="https://github.com/BryanDegante"
               />
             </li>
 
-            <li>
+            <li className="opacity-0">
               <ExpandLink
-                text='LinkedIn'
-                icon={<FaLinkedin className='text-sm text-text sm:text-base' />}
-                link='https://www.linkedin.com/in/bryandegante-dev/'
-                newPage={true}
+                text="LinkedIn"
+                icon={<FaLinkedin className="text-sm text-text sm:text-base" />}
+                link="https://www.linkedin.com/in/bryandegante-dev/"
               />
             </li>
 
-            <li>
+            <li className="opacity-0">
               <ContactButton />
             </li>
           </ul>
