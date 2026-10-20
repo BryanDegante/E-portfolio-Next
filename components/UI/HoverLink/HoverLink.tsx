@@ -19,6 +19,7 @@ export default function HoverLink({
    onClick={() => onClose?.()}
       href={link}
       className={`${css} ${styles['link__hover--effect']}`}
+      scroll={true  }
     >
       {label}
     </Link>

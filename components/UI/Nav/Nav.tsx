@@ -14,6 +14,7 @@ import LanguageSwitcher from '../Language Switcher/LanguageSwitcher';
 import NavModal from './NavModal';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
+import NavbarContactButton from './NavContactButton';
 
 export default function Nav() {
   const pathname = usePathname();
@@ -49,7 +50,6 @@ export default function Nav() {
     return () => ctx.revert();
   }, []);
 
-  // Hamburger animation
   useEffect(() => {
     const hamburger = hamburgerRef.current;
     if (!hamburger) return;
@@ -112,7 +112,7 @@ export default function Nav() {
           {links.map((link) => (
             <li key={link.id}>
               {link.isModal ? (
-                <ContactButton />
+                <NavbarContactButton />
               ) : (
                 <HoverLink
                   link={link.href ?? '/'}

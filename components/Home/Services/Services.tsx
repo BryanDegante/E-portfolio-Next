@@ -30,78 +30,95 @@ export default function Service() {
       const cards = section.querySelectorAll('.gsap-card');
       const footer = section.querySelector('.gsap-footer');
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-        },
-        defaults: {
-          ease: 'power3.out',
-          duration: 0.8,
-        },
+      const mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        // INSTANTLY hide elements on mount so they never flash into view before GSAP triggers
+        gsap.set([tag, title, description, cards, footer], {
+          autoAlpha: 0,
+          y: 20,
+        });
+
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 75%',
+            toggleActions: 'play none none none',
+            once: true,
+          },
+        });
+
+        // 1. Reveal the section label
+        if (tag) {
+          timeline.to(tag, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.45,
+            ease: 'power2.out',
+          });
+        }
+
+        // 2. Reveal the heading
+        if (title) {
+          timeline.to(
+            title,
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.65,
+              ease: 'power3.out',
+            },
+            '-=0.2'
+          );
+        }
+
+        // 3. Reveal the description
+        if (description) {
+          timeline.to(
+            description,
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.55,
+              ease: 'power2.out',
+            },
+            '-=0.3'
+          );
+        }
+
+        // 4. Reveal all cards with a consistent stagger
+        if (cards.length) {
+          timeline.to(
+            cards,
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.13,
+              ease: 'power3.out',
+            },
+            '-=0.1'
+          );
+        }
+
+        // 5. Finish with the footer
+        if (footer) {
+          timeline.to(
+            footer,
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.45,
+              ease: 'power2.out',
+            },
+            '-=0.15'
+          );
+        }
+
+        return () => timeline.scrollTrigger?.kill();
       });
 
-      if (tag) {
-        tl.fromTo(
-          tag,
-          { opacity: 0, x: -20 },
-          { opacity: 1, x: 0 }
-        );
-      }
-
-      if (title) {
-        tl.fromTo(
-          title,
-          {
-            opacity: 0,
-            y: 25,
-            filter: 'blur(8px)',
-          },
-          {
-            opacity: 1,
-            y: 0,
-            filter: 'blur(0px)',
-            duration: 1,
-          },
-          '-=0.45'
-        );
-      }
-
-      if (description) {
-        tl.fromTo(
-          description,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.75 },
-          '-=0.55'
-        );
-      }
-
-      if (cards.length > 0) {
-        cards.forEach((card, index) => {
-          const isWideCard = index === 2;
-
-          tl.fromTo(
-            card,
-            isWideCard
-              ? { opacity: 0, x: 35 }
-              : { opacity: 0, y: 35 },
-            isWideCard
-              ? { opacity: 1, x: 0, duration: 0.8 }
-              : { opacity: 1, y: 0, duration: 0.8 },
-            index === 0 ? '-=0.2' : '-=0.5'
-          );
-        });
-      }
-
-      if (footer) {
-        tl.fromTo(
-          footer,
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.65 },
-          '-=0.3'
-        );
-      }
+      return () => mm.revert();
     },
     { scope: sectionRef }
   );

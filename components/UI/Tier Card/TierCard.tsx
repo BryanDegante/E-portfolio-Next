@@ -1,4 +1,3 @@
-
 import type { Tier } from '@/data/TierData';
 import ContactButton from '@/components/UI/Contact/ContactButton';
 import { FiCheck, FiExternalLink } from 'react-icons/fi';
@@ -19,10 +18,10 @@ export default function TierCard({
 
   return (
     <div
-      className={`relative flex flex-col justify-between rounded-3xl border bg-neutral-900/60 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 ${
+      className={`tier-card relative flex flex-col justify-between rounded-3xl border bg-neutral-900/60 p-8 backdrop-blur-xl ${
         isPopular
           ? 'border-blue-400/50 shadow-[0_20px_60px_-15px_rgba(59,130,246,0.25)] lg:-translate-y-2'
-          : 'border-white/10 hover:border-blue-400/30'
+          : 'border-white/10'
       }`}
     >
       {isPopular && (
@@ -47,7 +46,7 @@ export default function TierCard({
           </div>
         </div>
 
-        <p className="mt-4 min-h-12.5 font-sans text-sm leading-relaxed text-neutral-400">
+        <p className="mt-4 min-h-12 font-sans text-sm leading-relaxed text-neutral-400">
           {tier.subtitle[language]}
         </p>
 

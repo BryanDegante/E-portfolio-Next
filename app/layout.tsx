@@ -7,6 +7,7 @@ import Particles from '@/components/Particles/Particles';
 import ContactModal from '@/components/UI/Contact/ContactModal';
 import Footer from '@/components/UI/Footer/Footer';
 import LoadingScreen from '@/components/UI/LoadingScreen/LoadingScreen';
+import ScrollToTop from '@/components/UI/Scroll/ScrollToTop';
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
@@ -38,6 +39,7 @@ export default function RootLayout({
         <LoadingScreen />
           <ContactModal />
           <Particles particleCount={700} color={'#E5E7EB'} />
+          <ScrollToTop/>
           <Nav />
           {children}
           <Footer />
