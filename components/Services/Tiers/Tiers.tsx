@@ -14,7 +14,6 @@ export default function Tiers() {
   return (
     <section id="Tiers" className="relative py-24 sm:py-32">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-        {/* Section Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <span className="mb-3 inline-block rounded-full border border-blue-400/20 bg-blue-400/15 px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-blue-300">
            {isEn ? 'TIERS' : 'PLANES'}
