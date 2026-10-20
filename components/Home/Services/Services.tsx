@@ -115,7 +115,7 @@ export default function Service() {
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <div className="mb-12 border-t border-white/10 pt-8 sm:mb-16">
           <div className="gsap-tag mb-5 flex items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-blue-400">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
               03 // {isEn ? 'Services' : 'Servicios'}
             </span>
           </div>
@@ -300,6 +300,7 @@ export default function Service() {
                 hover:bg-blue-500/20
                 hover:text-white
                 hover:shadow-[0_0_24px_rgba(59,130,246,0.15)]
+                sm:max-w-57.5
               "
             >
               {isEn ? 'Explore All Services' : 'Ver Todos los Servicios'}
