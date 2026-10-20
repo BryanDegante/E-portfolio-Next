@@ -29,8 +29,6 @@ export default function Faq() {
     >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start">
-
-          {/* Section Header */}
           <div className="lg:sticky lg:top-32 lg:col-span-5">
             <span className="mb-3.5 inline-block rounded-full border border-blue-400/20 bg-blue-400/10 px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-blue-300">
               {isEn ? 'FAQ' : 'PREGUNTAS FRECUENTES'}
@@ -54,7 +52,6 @@ export default function Faq() {
             </p>
           </div>
 
-          {/* FAQ Accordion */}
           <div className="space-y-4 lg:col-span-7">
             {FAQData.map((item, index) => (
               <FaqCard

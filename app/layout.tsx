@@ -8,6 +8,7 @@ import ContactModal from '@/components/UI/Contact/ContactModal';
 import Footer from '@/components/UI/Footer/Footer';
 import LoadingScreen from '@/components/UI/LoadingScreen/LoadingScreen';
 import ScrollToTop from '@/components/UI/Scroll/ScrollToTop';
+import LayoutVisibility from '@/components/LayoutVisibility';
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
@@ -20,9 +21,54 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Bryan Degante | Frontend Developer',
+  metadataBase: new URL('https://bryandegante.dev'),
+  title: {
+    default: 'Bryan Degante | Frontend Web Developer',
+    template: '%s | Bryan Degante',
+  },
   description:
-    'Frontend developer specializing in React, Next.js, and modern web experiences.',
+    'Frontend developer specializing in Next.js, modern UI/UX design systems, GSAP animations, and interactive web experiences.',
+  keywords: [
+    'Bryan Degante',
+    'Frontend Developer',
+    'Web Designer',
+    'Next.js Developer',
+    'React Developer',
+    'Tailwind CSS',
+    'GSAP Animations',
+    'Houston Web Developer',
+    'Freelance Frontend Developer',
+  ],
+  authors: [{ name: 'Bryan Degante', url: 'https://bryandegante.dev' }],
+  creator: 'Bryan Degante',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://bryandegante.dev',
+    title: 'Bryan Degante | Frontend Web Developer',
+    description:
+      'Frontend developer specializing in Next.js, modern UI/UX design systems, and interactive web experiences.',
+    siteName: 'Bryan Degante',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bryan Degante — Portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bryan Degante | Frontend Web Developer',
+    description:
+      'Frontend developer specializing in Next.js, modern UI/UX design systems, and interactive web experiences.',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -36,13 +82,11 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} h-full antialiased`}>
       <body className='bg-section min-h-full flex flex-col'>
         <ReduxProvider>
-        <LoadingScreen />
+          <LoadingScreen />
           <ContactModal />
           <Particles particleCount={700} color={'#E5E7EB'} />
-          <ScrollToTop/>
-          <Nav />
-          {children}
-          <Footer />
+          <ScrollToTop />
+          <LayoutVisibility>{children}</LayoutVisibility>
         </ReduxProvider>
       </body>
     </html>

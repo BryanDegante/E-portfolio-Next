@@ -82,10 +82,9 @@ export default function AddOns() {
   );
 
   return (
-    <section ref={sectionRef} id="addons" className="relative py-20 sm:py-28 overflow-hidden">
+    <section ref={sectionRef} id="AddOns" className="relative py-20 sm:py-28 overflow-hidden">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
         
-        {/* Split Header */}
         <div className="mb-14 border-t border-white/10 pt-10">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             
@@ -127,7 +126,6 @@ export default function AddOns() {
           </div>
         </div>
 
-        {/* Add-Ons Grid with items-stretch for uniform card height */}
         <div ref={gridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
           {AddOnData.map((addon) => (
             <div key={addon.title.en} className="addon-card h-full flex flex-col">

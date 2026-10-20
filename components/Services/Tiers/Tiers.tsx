@@ -118,7 +118,6 @@ export default function Tiers() {
     >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
         
-        {/* Section Header */}
         <div className="mx-auto mb-12 lg:mb-16 max-w-3xl text-center">
           <span
             ref={labelRef}
@@ -147,7 +146,6 @@ export default function Tiers() {
           </p>
         </div>
 
-        {/* Cards Grid */}
         <div
           ref={cardsRef}
           className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch"

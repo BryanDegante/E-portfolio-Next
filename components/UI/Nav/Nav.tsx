@@ -8,7 +8,6 @@ import gsap from 'gsap';
 
 import styles from './Nav.module.css';
 import { navLinks } from '@/data/navLinks';
-import ContactButton from '@/components/UI/Contact/ContactButton';
 import HoverLink from '../HoverLink/HoverLink';
 import LanguageSwitcher from '../Language Switcher/LanguageSwitcher';
 import NavModal from './NavModal';
@@ -25,7 +24,6 @@ export default function Nav() {
 
   const language = useSelector((state: RootState) => state.language.language);
 
-  // Navbar entrance animation
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
@@ -85,62 +83,58 @@ export default function Nav() {
   const links =
     pathname === '/services'
       ? navLinks.services
-      : pathname === '/privacy'
-        ? navLinks.privacy
-        : navLinks.home;
+      : pathname === '/projects'
+        ? navLinks.projects
+        : pathname === '/privacy' || pathname === '/sitemap'
+          ? navLinks.privacy
+          : navLinks.home;
 
   return (
-    <nav
-      ref={navRef}
-      className="fixed left-0 top-5 z-50 w-full px-4 sm:px-6"
-    >
+    <nav ref={navRef} className='fixed left-0 top-5 z-50 w-full px-4 sm:px-6'>
       <div
-        className={`mx-auto flex w-full max-w-275 items-center justify-between gap-4 rounded-[18px] px-5 py-3.5 sm:px-7 ${styles.content}`}
-      >
-        <Link href="/" aria-label="Go to homepage" className="shrink-0">
+        className={`mx-auto flex w-full max-w-275 items-center justify-between gap-4 rounded-[18px] px-5 py-3.5 sm:px-7 ${styles.content}`}>
+        <Link href='/' aria-label='Go to homepage' className='shrink-0'>
           <Image
-            src="/logo.png"
-            alt="Bryan Degante"
+            src='/logo.png'
+            alt='Bryan Degante'
             width={40}
             height={40}
             priority
-            className="h-10 w-10 object-contain"
+            className='h-10 w-10 object-contain'
           />
         </Link>
 
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className='hidden items-center gap-6 md:flex'>
           {links.map((link) => (
             <li key={link.id}>
-              {link.isModal ? (
-                <NavbarContactButton />
-              ) : (
-                <HoverLink
-                  link={link.href ?? '/'}
-                  css="text-sm font-medium text-text"
-                  label={link.label[language]}
-                />
-              )}
+              <HoverLink
+                link={link.href ?? '/'}
+                css='text-sm font-medium text-text'
+                label={link.label[language]}
+              />
             </li>
           ))}
+          <li>
+            <NavbarContactButton />
+          </li>
         </ul>
 
-        <div className="hidden md:flex">
+        <div className='hidden md:flex'>
           <LanguageSwitcher />
         </div>
 
         <button
           ref={hamburgerRef}
-          type="button"
+          type='button'
           aria-label={
             isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
           }
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="relative z-60 flex flex-col gap-1.5 cursor-pointer md:hidden"
-        >
-          <span className="h-0.5 w-6 block bg-text transition-colors" />
-          <span className="h-0.5 w-6 block bg-text transition-colors" />
-          <span className="h-0.5 w-6 block bg-text transition-colors" />
+          className='relative z-60 flex flex-col gap-1.5 cursor-pointer md:hidden'>
+          <span className='h-0.5 w-6 block bg-text transition-colors' />
+          <span className='h-0.5 w-6 block bg-text transition-colors' />
+          <span className='h-0.5 w-6 block bg-text transition-colors' />
         </button>
       </div>
 
