@@ -9,6 +9,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useSelector } from 'react-redux';
 import type { RootState } from '@/redux/store';
+import NavbarContactButton from './NavContactButton';
 
 type NavModalProps = {
   navLinks: NavLink[];
@@ -97,18 +98,17 @@ export default function NavModal({
               }}
               className="navModal-item"
             >
-              {link.isModal ? (
-                <ContactButton />
-              ) : (
                 <HoverLink
                   link={link.href ?? '/'}
                   onClose={onClose}
                   label={link.label[language]}
                   css="text-left text-xl font-medium text-text"
                 />
-              )}
             </li>
           ))}
+          <li>
+            <NavbarContactButton onClick={onClose} />
+          </li>
         </ul>
 
         <LanguageSwitcher onClick={onClose} />

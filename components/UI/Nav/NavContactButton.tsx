@@ -5,7 +5,11 @@ import type { RootState } from '@/redux/store';
 import { FiArrowRight } from 'react-icons/fi';
 import { setIsModalOpen } from '@/redux/slices/ContactSlice';
 
-export default function NavbarContactButton() {
+type NavbarContactButtonProps={
+  onClick ? : () => void
+}
+
+export default function NavbarContactButton({onClick}: NavbarContactButtonProps) {
   const language = useSelector(
     (state: RootState) => state.language.language
   );
@@ -25,7 +29,12 @@ export default function NavbarContactButton() {
         hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.35)]
         active:scale-95
       "
-      onClick={()=> dispatch(setIsModalOpen(true))}
+      
+onClick={() => {
+  onClick?.(); 
+  dispatch(setIsModalOpen(true)); 
+}}
+
       type='button'
     >
       <span

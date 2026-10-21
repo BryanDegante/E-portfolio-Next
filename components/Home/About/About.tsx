@@ -19,38 +19,39 @@ interface HighlightCard {
   };
 }
 
+
 const HIGHLIGHTS: HighlightCard[] = [
   {
     number: '01',
     title: {
-      en: 'Frontend Development',
-      es: 'Desarrollo Frontend',
+      en: 'Building for the Web',
+      es: 'Desarrollo Web',
     },
     description: {
-      en: 'Building responsive, user-friendly web interfaces with reusable components and maintainable code.',
-      es: 'Creación de interfaces web responsivas y fáciles de usar mediante componentes reutilizables y código mantenible.',
+      en: 'Turning ideas into responsive, functional web applications using modern frontend tools and reusable components.',
+      es: 'Transformando ideas en aplicaciones web funcionales y adaptables mediante herramientas modernas y componentes reutilizables.',
     },
   },
   {
     number: '02',
     title: {
-      en: 'Application Functionality',
-      es: 'Funcionalidad de Aplicaciones',
+      en: 'Learning by Building',
+      es: 'Aprender Creando',
     },
     description: {
-      en: 'Creating interactive features, managing application state, and connecting interfaces to APIs and external services.',
-      es: 'Creación de funciones interactivas, gestión del estado de las aplicaciones e integración de interfaces con APIs y servicios externos.',
+      en: 'Growing as a self-taught developer through hands-on projects, problem-solving, and continuous learning.',
+      es: 'Creciendo como desarrollador autodidacta mediante proyectos prácticos, resolución de problemas y aprendizaje continuo.',
     },
   },
   {
     number: '03',
     title: {
-      en: 'UI & Interaction',
-      es: 'Interfaz e Interacción',
+      en: 'Design & Interaction',
+      es: 'Diseño e Interacción',
     },
     description: {
-      en: 'Combining thoughtful design, clean layouts, and purposeful animations to create polished digital experiences.',
-      es: 'Combinación de diseño cuidadoso, diseños limpios y animaciones funcionales para crear experiencias digitales pulidas.',
+      en: 'Exploring thoughtful UI design, smooth animations, and interactive details that make web experiences feel polished.',
+      es: 'Explorando el diseño de interfaces, las animaciones fluidas y los detalles interactivos que hacen más atractivas las experiencias web.',
     },
   },
 ];
@@ -60,36 +61,39 @@ const CONTENT = {
     label: '01 // ABOUT',
     heading: 'Building thoughtful, responsive web experiences.',
     paragraphOneStart:
-      "I'm a frontend developer who enjoys turning ideas into ",
-    paragraphOneHighlight: 'clean, functional, and user-friendly',
+      "I'm a self-taught frontend developer who enjoys turning ideas into ",
+    paragraphOneHighlight: 'interactive, user friendly experiences',
     paragraphOneEnd:
-      ' web experiences. I focus on building interfaces that look great, work across devices, and make it easy for people to interact with the product.',
+      '. My journey into web development has been driven by curiosity, hands-on practice, and a desire to understand how things work behind the scenes.',
     paragraphTwoStart:
-      'I enjoy the process of taking a design from concept to a ',
-    paragraphTwoHighlight: 'working application',
+      'Through personal projects and continuous learning, I’ve been developing my skills in ',
+    paragraphTwoHighlight: 'React, Next.js, and TypeScript',
     paragraphTwoEnd:
-      ", paying attention to both the details people see and the functionality that makes an experience work. I'm always looking for ways to write better code, improve usability, and create interfaces that feel intuitive and polished.",
-    paragraphThreeStart: "I'm currently seeking ",
+      '. I enjoy bringing designs to life, exploring application functionality, and experimenting with animations to create experiences that look good and work well.',
+    paragraphThreeStart:
+      "I'm looking for ",
     paragraphThreeHighlight: 'frontend developer opportunities',
     paragraphThreeEnd:
-      " where I can contribute to meaningful projects, collaborate with a team, and continue growing as a developer. I'm also open to select freelance projects.",
+      ' where I can contribute to meaningful projects, learn from other developers, and continue growing my skills. I’m also open to select freelance projects where I can help businesses build their online presence.',
   },
   es: {
     label: '01 // SOBRE MÍ',
     heading: 'Creando experiencias web intuitivas y adaptables.',
     paragraphOneStart:
-      'Soy desarrollador frontend y disfruto transformar ideas en ',
-    paragraphOneHighlight: 'experiencias web funcionales e intuitivas',
+      'Soy desarrollador frontend autodidacta y disfruto transformar ideas en ',
+    paragraphOneHighlight: 'experiencias interactivas y fáciles de usar',
     paragraphOneEnd:
-      '. Me enfoco en crear interfaces atractivas, adaptables a distintos dispositivos y fáciles de usar.',
-    paragraphTwoStart: 'Me gusta transformar diseños en ',
-    paragraphTwoHighlight: 'aplicaciones funcionales',
+      '. Mi camino en el desarrollo web ha estado impulsado por la curiosidad, la práctica y el deseo de entender cómo funcionan las cosas detrás de cada interfaz.',
+    paragraphTwoStart:
+      'A través de proyectos personales y aprendizaje continuo, he ido desarrollando mis habilidades en ',
+    paragraphTwoHighlight: 'React, Next.js y TypeScript',
     paragraphTwoEnd:
-      ', prestando atención tanto a los detalles visuales como al funcionamiento de cada experiencia. Siempre busco mejorar mi código, la usabilidad y la forma en que las personas interactúan con una aplicación.',
-    paragraphThreeStart: 'Actualmente busco ',
+      '. Disfruto dar vida a los diseños, explorar la funcionalidad de las aplicaciones y experimentar con animaciones para crear experiencias atractivas y funcionales.',
+    paragraphThreeStart:
+      'Busco ',
     paragraphThreeHighlight: 'oportunidades como desarrollador frontend',
     paragraphThreeEnd:
-      ' donde pueda contribuir a proyectos reales, colaborar con un equipo y seguir creciendo profesionalmente. También estoy disponible para proyectos freelance seleccionados.',
+      ' donde pueda contribuir a proyectos significativos, aprender de otros desarrolladores y seguir desarrollando mis habilidades. También estoy abierto a proyectos freelance seleccionados para ayudar a negocios a fortalecer su presencia en línea.',
   },
 };
 

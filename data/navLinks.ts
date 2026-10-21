@@ -20,6 +20,11 @@ export const navLinks = {
       href: '#About',
     },
     {
+      id: 'Skills',
+      label: { en: 'Skills', es: 'Habilidades' },
+      href: '#Skills',
+    },
+    {
       id: 'Projects',
       label: { en: 'Projects', es: 'Proyectos' },
       href: '#Projects',

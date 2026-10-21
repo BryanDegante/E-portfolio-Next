@@ -43,7 +43,7 @@ export default function Footer() {
             </span>
             
             <HoverLink link='/' css='text-xs w-fit' label={isEn ? 'Home' : 'Inicio'}/>
-            <HoverLink link='/Projects' css='text-xs w-fit' label={isEn ? 'Projects' : 'Proyectos'}/>
+            <HoverLink link='/projects' css='text-xs w-fit' label={isEn ? 'Projects' : 'Proyectos'}/>
             <HoverLink link='/services' css='text-xs w-fit' label=  {isEn ? 'Services' : 'Servicios'}/>
           
           </div>

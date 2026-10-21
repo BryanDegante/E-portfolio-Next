@@ -120,7 +120,7 @@ export default function Tiers() {
             ref={labelRef}
             className="mb-3 inline-block rounded-full border border-blue-400/20 bg-blue-400/15 px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-blue-300"
           >
-            04 // {isEn ? 'TIERS' : 'PLANES'}
+            {isEn ? 'TIERS' : 'PLANES'}
           </span>
 
           <h2

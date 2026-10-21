@@ -78,6 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
+    data-scroll-behavior="smooth"
       lang='en'
       className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} h-full antialiased`}>
       <body className='bg-section min-h-full flex flex-col'>
