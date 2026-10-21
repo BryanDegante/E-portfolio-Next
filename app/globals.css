@@ -98,9 +98,6 @@ h6 {
   }
 }
 
-section{
-  @apply py-6 px-4 md:px-6 md:py-8;
-}
 
 .row{
   margin: 0 auto;

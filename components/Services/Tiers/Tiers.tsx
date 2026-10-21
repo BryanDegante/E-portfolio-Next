@@ -54,7 +54,6 @@ export default function Tiers() {
       mm.add(
         '(min-width: 1024px) and (prefers-reduced-motion: no-preference)',
         () => {
-          // Set initial hidden state
           gsap.set([label, title, description], {
             autoAlpha: 0,
             y: 30,
@@ -68,7 +67,7 @@ export default function Tiers() {
           const timeline = gsap.timeline({
             scrollTrigger: {
               trigger: section,
-              start: 'top top+=80', // Pins slightly below the navbar
+              start: 'top top+=80', 
               end: '+=150%',
               pin: true,
               pinSpacing: true,
@@ -79,12 +78,10 @@ export default function Tiers() {
           });
 
           timeline
-            // 1. Reveal Section Header
             .to(label, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power2.out' })
             .to(title, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.2')
             .to(description, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
             
-            // 2. Stagger reveal the 3 tier cards
             .to(
               cards,
               {
@@ -118,13 +115,12 @@ export default function Tiers() {
     >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
         
-        {/* Section Header */}
         <div className="mx-auto mb-12 lg:mb-16 max-w-3xl text-center">
           <span
             ref={labelRef}
             className="mb-3 inline-block rounded-full border border-blue-400/20 bg-blue-400/15 px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-blue-300"
           >
-            04 // {isEn ? 'TIERS' : 'PLANES'}
+            {isEn ? 'TIERS' : 'PLANES'}
           </span>
 
           <h2
@@ -147,7 +143,6 @@ export default function Tiers() {
           </p>
         </div>
 
-        {/* Cards Grid */}
         <div
           ref={cardsRef}
           className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch"

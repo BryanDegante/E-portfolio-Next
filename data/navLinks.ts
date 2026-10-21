@@ -5,7 +5,6 @@ export type NavLink = {
     es: string;
   };
   href?: string;
-  isModal?: boolean;
 };
 
 export const navLinks = {
@@ -21,14 +20,14 @@ export const navLinks = {
       href: '#About',
     },
     {
+      id: 'Skills',
+      label: { en: 'Skills', es: 'Habilidades' },
+      href: '#Skills',
+    },
+    {
       id: 'Projects',
       label: { en: 'Projects', es: 'Proyectos' },
       href: '#Projects',
-    },
-    {
-      id: 'Contact',
-      label: { en: 'Contact', es: 'Contacto' },
-      isModal: true,
     },
   ],
   services: [
@@ -38,17 +37,22 @@ export const navLinks = {
       href: '/',
     },
     {
+      id: 'Projects',
+      label: { en: 'Projects', es: 'Proyectos' },
+      href: '/projects',
+    },
+    {
       id: 'Tiers',
       label: { en: 'Tiers', es: 'Precios' },
       href: '#Tiers',
     },
     {
-      id: 'Contact',
-      label: { en: 'Contact', es: 'Contacto' },
-      isModal: true,
+      id: 'Add Ons',
+      label: { en: 'Add Ons', es: 'Extras' },
+      href: '#AddOns',
     },
   ],
-  privacy: [
+  projects: [
     {
       id: 'Home',
       label: { en: 'Home', es: 'Inicio' },
@@ -59,10 +63,22 @@ export const navLinks = {
       label: { en: 'Services', es: 'Servicios' },
       href: '/services',
     },
+  ],
+  privacy: [
     {
-      id: 'Contact',
-      label: { en: 'Contact', es: 'Contacto' },
-      isModal: true,
+      id: 'Home',
+      label: { en: 'Home', es: 'Inicio' },
+      href: '/',
+    },
+    {
+      id: 'Projects',
+      label: { en: 'Projects', es: 'Proyectos' },
+      href: '/projects',
+    },
+    {
+      id: 'Services',
+      label: { en: 'Services', es: 'Servicios' },
+      href: '/services',
     },
   ],
 } satisfies Record<string, NavLink[]>;

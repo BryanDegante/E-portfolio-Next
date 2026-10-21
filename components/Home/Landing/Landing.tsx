@@ -116,7 +116,7 @@ export default function Landing() {
             <p className="gsap-desc mt-2 max-w-lg font-heading text-base font-normal leading-relaxed text-neutral-400 opacity-0 sm:text-lg lg:text-xl">
               {isEn
                 ? 'Building responsive interfaces with modern web technologies.'
-                : 'Creo interfaces responsivas con tecnologías modernas.'}
+                : 'Desarrollo interfaces responsivas con tecnologías modernas.'}
             </p>
           </div>
 

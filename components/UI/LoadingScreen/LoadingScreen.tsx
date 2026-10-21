@@ -51,7 +51,6 @@ export default function LoadingScreen() {
         path.getTotalLength()
       );
 
-      // Hide all fills and prepare the paths before drawing begins.
       gsap.set(paths, {
         fillOpacity: 0,
         strokeDasharray: (index) => pathLengths[index],
@@ -75,7 +74,6 @@ export default function LoadingScreen() {
       timelineRef.current = timeline;
 
       timeline
-        // Draw the logo outlines.
         .to(paths, {
           strokeDashoffset: 0,
           duration: 1.6,
@@ -83,7 +81,6 @@ export default function LoadingScreen() {
           stagger: 0.15,
         })
 
-        // Reveal the gradient fills.
         .to(
           paths,
           {
@@ -95,7 +92,6 @@ export default function LoadingScreen() {
           '-=0.4'
         )
 
-        // Refine the outlines.
         .to(
           paths,
           {
@@ -106,7 +102,6 @@ export default function LoadingScreen() {
           '-=0.2'
         )
 
-        // Gently scale the completed logo.
         .to(
           logo,
           {
@@ -117,10 +112,8 @@ export default function LoadingScreen() {
           '-=0.25'
         )
 
-        // Brief pause before the exit.
         .to({}, { duration: 0.4 })
 
-        // Slide the loading screen upward.
         .to(container, {
           opacity: 0,
           yPercent: -100,

@@ -185,7 +185,7 @@ export default function Contact() {
       <div className='relative mx-auto w-full max-w-6xl border-t border-neutral-900 px-5 pt-10 sm:px-8 sm:pt-12 lg:px-10'>
         <div className='contact-label mb-8 inline-flex items-center'>
           <span className='font-mono text-xs uppercase tracking-widest text-cyan-400'>
-            04 // {isEn ? 'CONTACT' : 'CONTACTO'}
+            05 // {isEn ? 'CONTACT' : 'CONTACTO'}
           </span>
         </div>
 
