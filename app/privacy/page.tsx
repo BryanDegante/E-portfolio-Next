@@ -12,7 +12,6 @@ export default function PrivacyPolicyPage() {
 
   return (
     <main className="relative min-h-screen bg-section text-neutral-300 py-24 sm:py-32 overflow-hidden">
-      {/* Background glow effect */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 h-125 w-full max-w-7xl bg-blue-500/3 blur-[120px]"
@@ -20,7 +19,6 @@ export default function PrivacyPolicyPage() {
 
       <div className="mx-auto w-full max-w-4xl px-5 sm:px-8">
         
-        {/* Back Link */}
         <div className="mb-10">
           <Link
             href="/"
@@ -30,7 +28,6 @@ export default function PrivacyPolicyPage() {
           </Link>
         </div>
 
-        {/* Header */}
         <header className="mb-12 border-b border-white/10 pb-8">
           <span className="mb-3.5 inline-block rounded-full border border-blue-400/20 bg-blue-400/10 px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-blue-300">
             {isEn ? 'Legal & Privacy' : 'Legal y Privacidad'}
@@ -43,7 +40,6 @@ export default function PrivacyPolicyPage() {
           </p>
         </header>
 
-        {/* Content */}
         <div className="space-y-10 font-sans text-neutral-300 leading-relaxed">
           <p className="text-base sm:text-lg">
             {isEn
@@ -51,7 +47,6 @@ export default function PrivacyPolicyPage() {
               : 'Esta Política de Privacidad explica cómo Bryan Degante ("yo" o "mi") recopila, utiliza y protege la información enviada a través de este sitio web.'}
           </p>
 
-          {/* Section 1 */}
           <section className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? 'Information I Collect' : 'Información que Recopilo'}
@@ -73,7 +68,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Section 2 */}
           <section className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? 'How I Use Your Information' : 'Cómo Utilizo tu Información'}
@@ -95,7 +89,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Section 3 */}
           <section className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? 'How Your Information Is Processed' : 'Cómo se Procesa tu Información'}
@@ -112,7 +105,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Section 4 */}
           <section className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? 'Information Sharing' : 'Compartición de Información'}
@@ -129,7 +121,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Section 5 */}
           <section className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? 'Data Retention' : 'Retención de Datos'}
@@ -141,7 +132,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Section 6 */}
           <section className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? 'Cookies and Tracking' : 'Cookies y Seguimiento'}
@@ -158,7 +148,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Section 7 */}
           <section className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? 'Third-Party Services' : 'Servicios de Terceros'}
@@ -175,7 +164,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Section 8 */}
           <section className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? "Children's Privacy" : 'Privacidad de los Niños'}
@@ -187,7 +175,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Section 9 */}
           <section className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? 'Changes to This Privacy Policy' : 'Cambios a Esta Política de Privacidad'}
@@ -204,7 +191,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Section 10 */}
           <section className="space-y-4 border-t border-white/10 pt-8">
             <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">
               {isEn ? 'Contact' : 'Contacto'}

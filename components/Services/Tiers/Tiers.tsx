@@ -54,7 +54,6 @@ export default function Tiers() {
       mm.add(
         '(min-width: 1024px) and (prefers-reduced-motion: no-preference)',
         () => {
-          // Set initial hidden state
           gsap.set([label, title, description], {
             autoAlpha: 0,
             y: 30,
@@ -68,7 +67,7 @@ export default function Tiers() {
           const timeline = gsap.timeline({
             scrollTrigger: {
               trigger: section,
-              start: 'top top+=80', // Pins slightly below the navbar
+              start: 'top top+=80', 
               end: '+=150%',
               pin: true,
               pinSpacing: true,
@@ -79,12 +78,10 @@ export default function Tiers() {
           });
 
           timeline
-            // 1. Reveal Section Header
             .to(label, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power2.out' })
             .to(title, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.2')
             .to(description, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
             
-            // 2. Stagger reveal the 3 tier cards
             .to(
               cards,
               {

@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main>
-      {/* Your Projects Page Content */}
     </main>
   );
 }

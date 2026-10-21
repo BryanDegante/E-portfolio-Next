@@ -115,7 +115,6 @@ export default function About() {
       const paragraphs = container.querySelectorAll('.about-paragraph');
       const cards = container.querySelectorAll('.about-card');
 
-      // Animate the section label.
       if (label) {
         gsap.fromTo(
           label,
@@ -137,7 +136,6 @@ export default function About() {
         );
       }
 
-      // Reveal the heading with a subtle blur effect.
       if (heading) {
         gsap.fromTo(
           heading,
@@ -162,7 +160,6 @@ export default function About() {
         );
       }
 
-      // Reveal paragraphs in sequence.
       if (paragraphs.length > 0) {
         gsap.fromTo(
           paragraphs,
@@ -185,7 +182,6 @@ export default function About() {
         );
       }
 
-      // Slide the highlight cards in from the right.
       if (cards.length > 0) {
         gsap.fromTo(
           cards,

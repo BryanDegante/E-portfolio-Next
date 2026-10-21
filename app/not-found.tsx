@@ -13,7 +13,6 @@ export default function NotFound() {
 
   return (
     <main className="relative flex min-h-screen items-center justify-center  text-neutral-300 py-24 sm:py-32 overflow-hidden">
-      {/* Ambient background glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-125ull max-w-5xl bg-blue-500/5 blur-[140px]"
@@ -21,17 +20,14 @@ export default function NotFound() {
 
       <div className="mx-auto w-full max-w-3xl px-5 text-center sm:px-8">
         
-        {/* Monospaced Tag */}
         <span className="mb-4 inline-block rounded-full border border-blue-400/20 bg-blue-400/10 px-3.5 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
           {isEn ? 'ERROR 404' : 'ERROR 404'}
         </span>
 
-        {/* Large Visual 404 Number */}
         <h1 className="font-heading text-7xl font-extrabold tracking-tight text-white sm:text-9xl lg:text-[11rem] leading-none drop-shadow-[0_10px_30px_rgba(59,130,246,0.15)]">
           404
         </h1>
 
-        {/* Dynamic Heading & Subtitle */}
         <h2 className="mt-4 font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl">
           {isEn ? 'Lost in Hyperspace' : 'Página no encontrada'}
         </h2>
@@ -41,7 +37,6 @@ export default function NotFound() {
             : 'La página que buscas no existe, ha sido movida o no está disponible temporalmente.'}
         </p>
 
-        {/* Primary Call To Action */}
         <div className="mt-8 flex justify-center">
           <Link
             href="/"
@@ -52,7 +47,6 @@ export default function NotFound() {
           </Link>
         </div>
 
-        {/* Secondary Quick Access Links */}
         <div className="mt-14 border-t border-white/10 pt-10">
           <p className="mb-6 font-mono text-xs uppercase tracking-widest text-neutral-500">
             {isEn ? 'Or explore these pages:' : 'O explora estas páginas:'}

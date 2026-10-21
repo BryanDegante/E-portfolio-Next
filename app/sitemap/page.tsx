@@ -52,7 +52,6 @@ export default function SitemapPage() {
 
   return (
     <main className="relative min-h-screen bg-section text-neutral-300 py-24 sm:py-32 overflow-hidden">
-      {/* Ambient background glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 h-125 w-full max-w-7xl bg-blue-500/3 blur-[120px]"
@@ -60,17 +59,6 @@ export default function SitemapPage() {
 
       <div className="mx-auto w-full max-w-4xl px-5 sm:px-8">
         
-        {/* Back Link */}
-        <div className="mb-10">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-blue-400 transition-colors hover:text-blue-300"
-          >
-            <span>←</span> {isEn ? 'Back to Home' : 'Volver al Inicio'}
-          </Link>
-        </div>
-
-        {/* Header */}
         <header className="mb-12 border-b border-white/10 pb-8">
           <span className="mb-3.5 inline-block rounded-full border border-blue-400/20 bg-blue-400/10 px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-blue-300">
             {isEn ? 'SITE MAP' : 'MAPA DEL SITIO'}
@@ -85,7 +73,6 @@ export default function SitemapPage() {
           </p>
         </header>
 
-        {/* Sitemap Grid */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {pages.map((page) => (
             <Link

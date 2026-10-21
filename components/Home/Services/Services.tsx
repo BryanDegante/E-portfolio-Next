@@ -33,7 +33,6 @@ export default function Service() {
       const mm = gsap.matchMedia();
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-        // INSTANTLY hide elements on mount so they never flash into view before GSAP triggers
         gsap.set([tag, title, description, cards, footer], {
           autoAlpha: 0,
           y: 20,
@@ -48,7 +47,6 @@ export default function Service() {
           },
         });
 
-        // 1. Reveal the section label
         if (tag) {
           timeline.to(tag, {
             autoAlpha: 1,
@@ -58,7 +56,6 @@ export default function Service() {
           });
         }
 
-        // 2. Reveal the heading
         if (title) {
           timeline.to(
             title,
@@ -72,7 +69,6 @@ export default function Service() {
           );
         }
 
-        // 3. Reveal the description
         if (description) {
           timeline.to(
             description,
@@ -86,7 +82,6 @@ export default function Service() {
           );
         }
 
-        // 4. Reveal all cards with a consistent stagger
         if (cards.length) {
           timeline.to(
             cards,
@@ -101,7 +96,6 @@ export default function Service() {
           );
         }
 
-        // 5. Finish with the footer
         if (footer) {
           timeline.to(
             footer,
