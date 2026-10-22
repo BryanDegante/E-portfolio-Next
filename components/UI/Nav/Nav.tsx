@@ -14,135 +14,156 @@ import NavModal from './NavModal';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import NavbarContactButton from './NavContactButton';
+import { useDispatch } from 'react-redux';
+import { setClientNavigation } from '@/redux/slices/navigationSlice';
 
 export default function Nav() {
-  const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const pathname = usePathname();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navRef = useRef<HTMLElement>(null);
-  const hamburgerRef = useRef<HTMLButtonElement>(null);
+	const navRef = useRef<HTMLElement>(null);
+	const hamburgerRef = useRef<HTMLButtonElement>(null);
 
-  const language = useSelector((state: RootState) => state.language.language);
+	const language = useSelector((state: RootState) => state.language.language);
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
+	const handleNavigation = () => {
+		dispatch(setClientNavigation(true));
+	};
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        nav,
-        {
-          y: -24,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          clearProps: 'transform,opacity',
-        },
-      );
-    }, nav);
+	useEffect(() => {
+		const nav = navRef.current;
+		if (!nav) return;
 
-    return () => ctx.revert();
-  }, []);
+		const ctx = gsap.context(() => {
+			gsap.fromTo(
+				nav,
+				{
+					y: -24,
+					opacity: 0,
+				},
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.8,
+					ease: 'power3.out',
+					clearProps: 'transform,opacity',
+				},
+			);
+		}, nav);
 
-  useEffect(() => {
-    const hamburger = hamburgerRef.current;
-    if (!hamburger) return;
+		return () => ctx.revert();
+	}, []);
 
-    const lines = hamburger.querySelectorAll('span');
-    if (lines.length < 3) return;
+	useEffect(() => {
+		const hamburger = hamburgerRef.current;
+		if (!hamburger) return;
 
-    const ctx = gsap.context(() => {
-      gsap.to(lines[0], {
-        rotate: isMenuOpen ? 45 : 0,
-        y: isMenuOpen ? 6 : 0,
-        duration: 0.25,
-        ease: 'power2.out',
-      });
+		const lines = hamburger.querySelectorAll('span');
+		if (lines.length < 3) return;
 
-      gsap.to(lines[1], {
-        opacity: isMenuOpen ? 0 : 1,
-        duration: 0.2,
-        ease: 'power2.out',
-      });
+		const ctx = gsap.context(() => {
+			gsap.to(lines[0], {
+				rotate: isMenuOpen ? 45 : 0,
+				y: isMenuOpen ? 6 : 0,
+				duration: 0.25,
+				ease: 'power2.out',
+			});
 
-      gsap.to(lines[2], {
-        rotate: isMenuOpen ? -45 : 0,
-        y: isMenuOpen ? -6 : 0,
-        duration: 0.25,
-        ease: 'power2.out',
-      });
-    }, hamburger);
+			gsap.to(lines[1], {
+				opacity: isMenuOpen ? 0 : 1,
+				duration: 0.2,
+				ease: 'power2.out',
+			});
 
-    return () => ctx.revert();
-  }, [isMenuOpen]);
+			gsap.to(lines[2], {
+				rotate: isMenuOpen ? -45 : 0,
+				y: isMenuOpen ? -6 : 0,
+				duration: 0.25,
+				ease: 'power2.out',
+			});
+		}, hamburger);
 
-  const links =
-    pathname === '/services'
-      ? navLinks.services
-      : pathname === '/projects'
-        ? navLinks.projects
-        : pathname === '/privacy' || pathname === '/sitemap'
-          ? navLinks.privacy
-          : navLinks.home;
+		return () => ctx.revert();
+	}, [isMenuOpen]);
 
-  return (
-    <nav ref={navRef} className='fixed left-0 top-5 z-50 w-full px-4 sm:px-6'>
-      <div
-        className={`mx-auto flex w-full max-w-275 items-center justify-between gap-4 rounded-[18px] px-5 py-3.5 sm:px-7 ${styles.content}`}>
-        <Link href='/' aria-label='Go to homepage' className='shrink-0'>
-          <Image
-            src='/logo.png'
-            alt='Bryan Degante'
-            width={40}
-            height={40}
-            priority
-            className='h-10 w-10 object-contain'
-          />
-        </Link>
+	const links =
+		pathname === '/services'
+			? navLinks.services
+			: pathname === '/projects'
+				? navLinks.projects
+				: pathname === '/privacy' || pathname === '/sitemap'
+					? navLinks.privacy
+					: navLinks.home;
 
-        <ul className='hidden items-center gap-6 md:flex'>
-          {links.map((link) => (
-            <li key={link.id}>
-              <HoverLink
-                link={link.href ?? '/'}
-                css='text-sm font-medium text-text'
-                label={link.label[language]}
-              />
-            </li>
-          ))}
-          <li>
-            <NavbarContactButton />
-          </li>
-        </ul>
+	return (
+		<nav
+			ref={navRef}
+			className="fixed left-0 top-5 z-50 w-full px-4 sm:px-6"
+		>
+			<div
+				className={`mx-auto flex w-full max-w-275 items-center justify-between gap-4 rounded-[18px] px-5 py-3.5 sm:px-7 ${styles.content}`}
+			>
+				<Link
+					href="/"
+					aria-label="Go to homepage"
+					className="shrink-0"
+					onClick={handleNavigation}
+				>
+					<Image
+						src="/logo.png"
+						alt="Bryan Degante"
+						width={40}
+						height={40}
+						priority
+						className="h-10 w-10 object-contain"
+					/>
+				</Link>
 
-        <div className='hidden md:flex'>
-          <LanguageSwitcher />
-        </div>
+				<ul className="hidden items-center gap-6 md:flex">
+					{links.map((link) => (
+						<li key={link.id}>
+							<HoverLink
+								link={link.href ?? '/'}
+								css="text-sm font-medium text-text"
+								label={link.label[language]}
+								onNavigate={handleNavigation}
+							/>
+						</li>
+					))}
+					<li>
+						<NavbarContactButton />
+					</li>
+				</ul>
 
-        <button
-          ref={hamburgerRef}
-          type='button'
-          aria-label={
-            isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
-          }
-          aria-expanded={isMenuOpen}
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className='relative z-60 flex flex-col gap-1.5 cursor-pointer md:hidden'>
-          <span className='h-0.5 w-6 block bg-text transition-colors' />
-          <span className='h-0.5 w-6 block bg-text transition-colors' />
-          <span className='h-0.5 w-6 block bg-text transition-colors' />
-        </button>
-      </div>
+				<div className="hidden md:flex">
+					<LanguageSwitcher />
+				</div>
 
-      <NavModal
-        navLinks={links}
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-      />
-    </nav>
-  );
+				<button
+					ref={hamburgerRef}
+					type="button"
+					aria-label={
+						isMenuOpen
+							? 'Close navigation menu'
+							: 'Open navigation menu'
+					}
+					aria-expanded={isMenuOpen}
+					onClick={() => setIsMenuOpen((prev) => !prev)}
+					className="relative z-60 flex flex-col gap-1.5 cursor-pointer md:hidden"
+				>
+					<span className="h-0.5 w-6 block bg-text transition-colors" />
+					<span className="h-0.5 w-6 block bg-text transition-colors" />
+					<span className="h-0.5 w-6 block bg-text transition-colors" />
+				</button>
+			</div>
+
+			<NavModal
+				navLinks={links}
+				isOpen={isMenuOpen}
+				onClose={() => setIsMenuOpen(false)}
+				onNavigate={handleNavigation}
+			/>
+		</nav>
+	);
 }

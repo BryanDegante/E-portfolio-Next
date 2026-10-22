@@ -12,15 +12,17 @@ import type { RootState } from '@/redux/store';
 import NavbarContactButton from './NavContactButton';
 
 type NavModalProps = {
-  navLinks: NavLink[];
-  isOpen: boolean;
-  onClose: () => void;
+	navLinks: NavLink[];
+	isOpen: boolean;
+	onClose: () => void;
+	onNavigate: () => void;
 };
 
 export default function NavModal({
   navLinks,
   isOpen,
   onClose,
+  onNavigate
 }: NavModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<(HTMLLIElement | null)[]>([]);
@@ -69,54 +71,55 @@ export default function NavModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-60 flex justify-end bg-[rgba(0,0,0,0.43)] backdrop-blur-lg">
-      <div
-        ref={modalRef}
-        className="flex h-full w-[85%] max-w-95 flex-col justify-between border-l border-l-[rgba(59,130,246,0.2)] bg-[rgba(2,6,23,0.82)] p-8 backdrop-blur-xl"
-      >
-        <div className="mb-10 flex items-center justify-between">
-          <p className="text-xs uppercase tracking-[2px] text-text">
-            Menu
-          </p>
+		<div className="fixed inset-0 z-60 flex justify-end bg-[rgba(0,0,0,0.43)] backdrop-blur-lg">
+			<div
+				ref={modalRef}
+				className="flex h-full w-[85%] max-w-95 flex-col justify-between border-l border-l-[rgba(59,130,246,0.2)] bg-[rgba(2,6,23,0.82)] p-8 backdrop-blur-xl"
+			>
+				<div className="mb-10 flex items-center justify-between">
+					<p className="text-xs uppercase tracking-[2px] text-text">
+						Menu
+					</p>
 
-          <button
-            type="button"
-            aria-label="Close navigation menu"
-            className="close-btn"
-            onClick={onClose}
-          >
-            ✕
-          </button>
-        </div>
+					<button
+						type="button"
+						aria-label="Close navigation menu"
+						className="close-btn"
+						onClick={onClose}
+					>
+						✕
+					</button>
+				</div>
 
-        <ul className="flex list-none flex-col gap-5">
-          {navLinks.map((link, i) => (
-            <li
-              key={link.id}
-              ref={(el) => {
-                linksRef.current[i] = el;
-              }}
-              className="navModal-item"
-            >
-                <HoverLink
-                  link={link.href ?? '/'}
-                  onClose={onClose}
-                  label={link.label[language]}
-                  css="text-left text-xl font-medium text-text"
-                />
-            </li>
-          ))}
-          <li>
-            <NavbarContactButton onClick={onClose} />
-          </li>
-        </ul>
+				<ul className="flex list-none flex-col gap-5">
+					{navLinks.map((link, i) => (
+						<li
+							key={link.id}
+							ref={(el) => {
+								linksRef.current[i] = el;
+							}}
+							className="navModal-item"
+						>
+							<HoverLink
+								link={link.href ?? '/'}
+								onClose={onClose}
+								onNavigate={onNavigate}
+								label={link.label[language]}
+								css="text-left text-xl font-medium text-text"
+							/>
+						</li>
+					))}
+					<li>
+						<NavbarContactButton onClick={onClose} />
+					</li>
+				</ul>
 
-        <LanguageSwitcher onClick={onClose} />
+				<LanguageSwitcher onClick={onClose} />
 
-        <div className="text-sm text-muted">
-          <p>© {new Date().getFullYear()} Portfolio</p>
-        </div>
-      </div>
-    </div>
+				<div className="text-sm text-muted">
+					<p>© {new Date().getFullYear()} Portfolio</p>
+				</div>
+			</div>
+		</div>
   );
 }
