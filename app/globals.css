@@ -16,13 +16,13 @@
   --color-card: #1717177e;
 }
 
-:root{
+:root {
   --primary-blue: #3b82f6;
   --primary-hover: #2563eb;
   --secondary-cyan: #06b6d4;
   --card: #1717177e;
-  --text:#e5e7eb;
-  --blue-gradient:linear-gradient(90deg, #3b82f6, #06b6d4);
+  --text: #e5e7eb;
+  --blue-gradient: linear-gradient(90deg, #3b82f6, #06b6d4);
 }
 
 
@@ -99,13 +99,13 @@ h6 {
 }
 
 
-.row{
+.row {
   margin: 0 auto;
   max-width: 1200px;
   width: 100%
 }
 
-.container{
+.container {
   @apply py-15 px-4 md:py-20 md:px-6 lg:py-24 lg:px-9;
 }
 
@@ -126,3 +126,48 @@ h6 {
 
 
 
+.border-flow {
+  isolation: isolate;
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.border-flow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: conic-gradient(from var(--border-angle),
+      transparent 0deg 18deg,
+      #3b82f6 24deg,
+      #06b6d4 42deg,
+      transparent 65deg 198deg,
+      #3b82f6 208deg,
+      #06b6d4 214deg,
+      transparent 224deg 360deg);
+-webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+  animation: borderFlow 5s linear infinite;
+}
+
+@keyframes borderFlow {
+  to {
+    --border-angle: 360deg;
+  }
+}

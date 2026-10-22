@@ -7,6 +7,7 @@ import RingCard from './RingCard';
 import { ProjectsData } from '@/data/ProjectData';
 import { RootState } from '@/redux/store';
 
+
 export default function ProjectRing() {
   const language = useSelector(
     (state: RootState) => state.language.language,
@@ -44,7 +45,7 @@ export default function ProjectRing() {
       const width = window.innerWidth;
 
       if (width < 640) {
-        setRadius(130);
+        setRadius(160);
       } else if (width < 1024) {
         setRadius(220);
       } else {
@@ -220,13 +221,13 @@ export default function ProjectRing() {
         setSelectedIndex(null);
       }}
       className="
-        relative my-8 flex h-[400px] w-full
+        relative my-8 flex h-100 w-full
         items-center justify-center overflow-visible
-        [perspective:900px]
+        perspective-[900px]
         cursor-grab select-none touch-pan-y
         active:cursor-grabbing
-        sm:my-12 sm:h-[500px]
-        sm:[perspective:1000px]
+        sm:my-12 sm:h-125
+        sm:perspective-[1000px]
       "
     >
       <div

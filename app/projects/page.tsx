@@ -1,3 +1,4 @@
+import Landing from '@/components/Projects/Landing';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main>
-      
+      <Landing /> 
     </main>
   );
 }

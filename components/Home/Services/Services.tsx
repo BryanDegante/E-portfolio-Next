@@ -311,6 +311,7 @@ export default function Service() {
                 hover:bg-blue-500/20
                 hover:text-white
                 hover:shadow-[0_0_24px_rgba(59,130,246,0.15)]
+                max-sm:justify-center
               "
             >
               {isEn ? 'Explore All Services' : 'Ver Todos los Servicios'}
@@ -325,7 +326,7 @@ export default function Service() {
           </article>
         </div>
 
-        <div className="gsap-footer mt-8 flex flex-col gap-2 border-t border-white/6 pt-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="gsap-footer mt-8 flex flex-col gap-2 border-t border-white/6 pt-5 sm:flex-row sm:items-center sm:justify-between ">
           <p className="font-mono text-[11px] tracking-wide text-neutral-500">
             {isEn
               ? 'YOUR BUSINESS. YOUR GOALS. BUILT FOR YOU.'

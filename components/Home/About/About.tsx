@@ -39,7 +39,7 @@ const HIGHLIGHTS: HighlightCard[] = [
       es: 'Aprender Creando',
     },
     description: {
-      en: 'Growing as a self-taught developer through hands-on projects, problem-solving, and continuous learning.',
+      en: 'Growing as a self taught developer through hands on projects, problem solving, and continuous learning.',
       es: 'Creciendo como desarrollador autodidacta mediante proyectos prácticos, resolución de problemas y aprendizaje continuo.',
     },
   },

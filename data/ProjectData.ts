@@ -21,7 +21,7 @@ export const ProjectsData: Project[] = [
 			en: 'EC 5 Star Transports',
 			es: 'EC 5 Star Transports',
 		},
-		screenshot: '/assets/ec5star.png',
+		screenshot: '/assets/Ec5star.png',
 		website: 'https://ec5startransports.vercel.app/',
 		tech: ['JavaScript', 'GSAP', 'React', 'CSS', 'Resend', 'Vercel','Vite'],
 		description: {
@@ -81,8 +81,8 @@ export const ProjectsData: Project[] = [
 	{
 		id: 5, 
 		name: {
-			en: 'Summarist Project',
-			es: 'Proyecto Summarist'
+			en: 'Summarist ',
+			es: 'Summarist'
 		}, 
 		screenshot: '/assets/summarist.png',
 		website: 'https://bryan-virtual-internship-v2.vercel.app/',
