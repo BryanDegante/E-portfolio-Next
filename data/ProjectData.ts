@@ -15,23 +15,69 @@ export type Project ={
 }
 
 export const ProjectsData: Project[] = [
-		{
-		id: 1, 
+	{
+		id: 1,
 		name: {
 			en: 'Summarist ',
-			es: 'Summarist'
-		}, 
+			es: 'Summarist',
+		},
 		screenshot: '/assets/summarist.png',
 		website: 'https://bryan-virtual-internship-v2.vercel.app/',
-		tech:['Typescript', 'Tailwind Css', 'Vercel', 'Redux', 'Next','Firebase'],
+		tech: [
+			'Typescript',
+			'Tailwind Css',
+			'Vercel',
+			'Redux',
+			'Next',
+			'Firebase',
+		],
 		description: {
-			en: '',
-			es: '',
+			en: 'An audiobook platform where users can discover and listen to book summaries, manage their personal library, and access premium features through subscription plans.',
+			es: 'Una plataforma de audiolibros donde los usuarios pueden descubrir y escuchar resúmenes de libros, administrar su biblioteca personal y acceder a funciones premium mediante planes de suscripción.',
+		},
+		featured: true,
+	},
+	
+	{
+		id: 2,
+		name: {
+			en: 'Awwards Website Clone',
+			es: 'Clon de Sitio Web de Awwards',
+		},
+		screenshot: '/assets/Awwards.png',
+		website: 'https://bryandegante.github.io/Awwards-Website-Clone/',
+		tech: ['JavaScript', 'GSAP', 'React', 'Tailwind Css', 'GitHub'],
+		description: {
+			en: 'A fully responsive awards-style interface clone built with React, recreating the design and layout of a real-world awards platform. Includes interactive elements, state management for dynamic content, and custom styling to match the original design, showcasing UI replication and front-end skills.',
+			es: 'Una copia de interface contrusida, recreando el diseño y la estructura de una plataforma de premios del mundo real. Incluye elementos interactivos, gestión de estado para contenido dinámico y estilos personalizados que recrean el diseño original, demostrando habilidades de replicación de interfaces y desarrollo front-end.',
 		},
 		featured: true,
 	},
 	{
-		id: 2, 
+		id: 3,
+		name: {
+			en: 'EC 5 Star Transports',
+			es: 'EC 5 Star Transports',
+		},
+		screenshot: '/assets/Ec5star.png',
+		website: 'https://ec5startransports.vercel.app/',
+		tech: [
+			'JavaScript',
+			'GSAP',
+			'React',
+			'CSS',
+			'Resend',
+			'Vercel',
+			'Vite',
+		],
+		description: {
+			en: 'Designed and developed a modern, luxury-styled website for a family-owned vehicle transport company. The goal was to build trust quickly through premium visuals, smooth animations, and clear conversion paths. Built with React and GSAP, the site features glassmorphism UI elements, an animated navigation experience, and responsive layouts optimized for both desktop and mobile. Special focus was placed on performance, reusable components, and high-end visual polish.',
+			es: 'Diseñé y desarrollé un sitio web moderno y elegante para una empresa familiar de transporte de vehículos. El objetivo fue generar confianza rápidamente mediante elementos visuales premium, animaciones fluidas y rutas de conversión claras. Construido con React y GSAP, el sitio incluye elementos de interfaz con glassmorphism, una navegación animada y diseños responsivos optimizados para computadoras y dispositivos móviles. Se prestó especial atención al rendimiento, los componentes reutilizables y un alto nivel de calidad visual.',
+		},
+		featured: true,
+	},
+	{
+		id: 4,
 		name: {
 			en: 'Movie Site',
 			es: 'Sitio de Películas',
@@ -47,23 +93,7 @@ export const ProjectsData: Project[] = [
 	},
 
 	{
-		id: 3, 
-		name: {
-			en: 'Awwards Website Clone',
-			es: 'Clon de Sitio Web de Awwards',
-		},
-		screenshot: '/assets/Awwards.png',
-		website: 'https://bryandegante.github.io/Awwards-Website-Clone/',
-		tech: ['JavaScript', 'GSAP', 'React', 'Tailwind Css', 'GitHub'],
-		description: {
-			en: 'A fully responsive awards-style interface clone built with React, recreating the design and layout of a real-world awards platform. Includes interactive elements, state management for dynamic content, and custom styling to match the original design, showcasing UI replication and front-end skills.',
-			es: 'Una copia de interface contrusida, recreando el diseño y la estructura de una plataforma de premios del mundo real. Incluye elementos interactivos, gestión de estado para contenido dinámico y estilos personalizados que recrean el diseño original, demostrando habilidades de replicación de interfaces y desarrollo front-end.',
-		},
-		featured: true,
-	},
-
-	{
-		id: 4, 
+		id: 5,
 		name: {
 			en: 'GSAP MacBook Site Clone',
 			es: 'Clon de Sitio MacBook con GSAP',
@@ -78,35 +108,18 @@ export const ProjectsData: Project[] = [
 		featured: false,
 	},
 	{
-		
-		id: 5, 
+		id: 6,
 		name: {
-			en: 'EC 5 Star Transports',
-			es: 'EC 5 Star Transports',
+			en: 'All Glass N Mirror',
+			es: 'All Glass N Mirror',
 		},
-		screenshot: '/assets/Ec5star.png',
-		website: 'https://ec5startransports.vercel.app/',
-		tech: ['JavaScript', 'GSAP', 'React', 'CSS', 'Resend', 'Vercel','Vite'],
+		screenshot: '/assets/glass.png',
+		website: 'https://www.allglasssnmirror.com/',
+		tech: ['Javascript', 'CSS', 'Vercel', 'React', 'Vite', 'GSAP'],
 		description: {
-			en: 'Designed and developed a modern, luxury-styled website for a family-owned vehicle transport company. The goal was to build trust quickly through premium visuals, smooth animations, and clear conversion paths. Built with React and GSAP, the site features glassmorphism UI elements, an animated navigation experience, and responsive layouts optimized for both desktop and mobile. Special focus was placed on performance, reusable components, and high-end visual polish.',
-			es: 'Diseñé y desarrollé un sitio web moderno y elegante para una empresa familiar de transporte de vehículos. El objetivo fue generar confianza rápidamente mediante elementos visuales premium, animaciones fluidas y rutas de conversión claras. Construido con React y GSAP, el sitio incluye elementos de interfaz con glassmorphism, una navegación animada y diseños responsivos optimizados para computadoras y dispositivos móviles. Se prestó especial atención al rendimiento, los componentes reutilizables y un alto nivel de calidad visual.',
+			en: 'A business website designed to showcase glass and mirror products and services, providing customers with an accessible way to explore available solutions and learn more about the company. The project focuses on presenting the business professionally, organizing information clearly, and creating a straightforward experience for residential and commercial customers.',
+			es: 'Un sitio web empresarial diseñado para presentar productos y servicios de vidrio y espejos, ofreciendo a los clientes una forma accesible de conocer las soluciones disponibles y obtener más información sobre la empresa. El proyecto se enfoca en transmitir una imagen profesional, organizar la información de manera clara y brindar una experiencia sencilla para clientes residenciales y comerciales.',
 		},
 		featured: true,
 	},
-
-	{
-		id: 6, 
-		name: {
-			en: 'All Glass N Mirror',
-			es: 'All Glass N Mirror'
-		}, 
-		screenshot: '/assets/glass.png',
-		website: 'https://www.allglasssnmirror.com/',
-		tech:['Javascript', 'Css', 'Vercel', 'React', 'Vite','GSAP'],
-		description: {
-			en: '',
-			es: '',
-		},
-		featured: true,
-	}
 ];
