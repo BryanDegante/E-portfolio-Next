@@ -15,22 +15,21 @@ export type Project ={
 }
 
 export const ProjectsData: Project[] = [
-	{
+		{
 		id: 1, 
 		name: {
-			en: 'EC 5 Star Transports',
-			es: 'EC 5 Star Transports',
-		},
-		screenshot: '/assets/Ec5star.png',
-		website: 'https://ec5startransports.vercel.app/',
-		tech: ['JavaScript', 'GSAP', 'React', 'CSS', 'Resend', 'Vercel','Vite'],
+			en: 'Summarist ',
+			es: 'Summarist'
+		}, 
+		screenshot: '/assets/summarist.png',
+		website: 'https://bryan-virtual-internship-v2.vercel.app/',
+		tech:['Typescript', 'Tailwind Css', 'Vercel', 'Redux', 'Next','Firebase'],
 		description: {
-			en: 'Designed and developed a modern, luxury-styled website for a family-owned vehicle transport company. The goal was to build trust quickly through premium visuals, smooth animations, and clear conversion paths. Built with React and GSAP, the site features glassmorphism UI elements, an animated navigation experience, and responsive layouts optimized for both desktop and mobile. Special focus was placed on performance, reusable components, and high-end visual polish.',
-			es: 'Diseñé y desarrollé un sitio web moderno y elegante para una empresa familiar de transporte de vehículos. El objetivo fue generar confianza rápidamente mediante elementos visuales premium, animaciones fluidas y rutas de conversión claras. Construido con React y GSAP, el sitio incluye elementos de interfaz con glassmorphism, una navegación animada y diseños responsivos optimizados para computadoras y dispositivos móviles. Se prestó especial atención al rendimiento, los componentes reutilizables y un alto nivel de calidad visual.',
+			en: '',
+			es: '',
 		},
 		featured: true,
 	},
-
 	{
 		id: 2, 
 		name: {
@@ -79,20 +78,22 @@ export const ProjectsData: Project[] = [
 		featured: false,
 	},
 	{
+		
 		id: 5, 
 		name: {
-			en: 'Summarist ',
-			es: 'Summarist'
-		}, 
-		screenshot: '/assets/summarist.png',
-		website: 'https://bryan-virtual-internship-v2.vercel.app/',
-		tech:['Typescript', 'Tailwind Css', 'Vercel', 'Redux', 'Next','Firebase'],
+			en: 'EC 5 Star Transports',
+			es: 'EC 5 Star Transports',
+		},
+		screenshot: '/assets/Ec5star.png',
+		website: 'https://ec5startransports.vercel.app/',
+		tech: ['JavaScript', 'GSAP', 'React', 'CSS', 'Resend', 'Vercel','Vite'],
 		description: {
-			en: '',
-			es: '',
+			en: 'Designed and developed a modern, luxury-styled website for a family-owned vehicle transport company. The goal was to build trust quickly through premium visuals, smooth animations, and clear conversion paths. Built with React and GSAP, the site features glassmorphism UI elements, an animated navigation experience, and responsive layouts optimized for both desktop and mobile. Special focus was placed on performance, reusable components, and high-end visual polish.',
+			es: 'Diseñé y desarrollé un sitio web moderno y elegante para una empresa familiar de transporte de vehículos. El objetivo fue generar confianza rápidamente mediante elementos visuales premium, animaciones fluidas y rutas de conversión claras. Construido con React y GSAP, el sitio incluye elementos de interfaz con glassmorphism, una navegación animada y diseños responsivos optimizados para computadoras y dispositivos móviles. Se prestó especial atención al rendimiento, los componentes reutilizables y un alto nivel de calidad visual.',
 		},
 		featured: true,
 	},
+
 	{
 		id: 6, 
 		name: {

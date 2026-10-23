@@ -228,7 +228,7 @@ export default function AboutTechStack() {
     >
       <div className="tech-header mb-8 border-b border-white/10 pb-4">
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
-         02 {isEn ? '// MY TOOLKIT' : '// MI KIT DE HERRAMIENTAS'}
+         02 {isEn ? '// MY Skill set' : '// MIS HABILIDADES'}
         </span>
 
         <h3 className="mt-1 font-heading text-xl font-bold text-white sm:text-2xl">

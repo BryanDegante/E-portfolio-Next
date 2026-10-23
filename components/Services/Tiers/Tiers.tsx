@@ -180,14 +180,19 @@ export default function Tiers() {
 					))}
 				</div>
 				<div className="text-center text-sm mt-12">
+					{isEn ? 
 					<p className="text-muted">
-						** A <span className='text__color--blue'>50% upfront deposit</span>
+						** A <span className='text__color--blue'>50% up front deposit </span>
 						is required to get started, with the{' '}
-						<span className='text__color--blue'>remaining balance</span>
-						due <span className='text__color--blue'>before launch. </span>
+						<span className='text__color--blue'>remaining balance </span>
+						due <span className='text__color--blue'> before launch. </span>
 						<span className='text__color--blue'>Additional </span>requests outside your selected package may
-						incur extra charges. **
+						incur <span className='text__color--blue'>extra charges. </span>**
 					</p>
+					: <p className='text-muted'>
+						** Un <span className="text__color--blue">50% deposito </span> es requerido para <span className='text__color--blue'> empezar </span> el proyecto. El pago final es requerido a <span className='text__color--blue'>la entrega</span> del proyecto. <span className='text__color--blue'>Cualquier cambio adicional </span> fuera del paquete requiere un <span className='text__color--blue'>pago adicional. </span>**
+					</p> 
+					}
 				</div>
 			</div>
 		</section>
