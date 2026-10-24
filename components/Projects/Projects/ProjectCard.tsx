@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { Project } from '@/data/ProjectData';
@@ -7,40 +8,107 @@ import { useSelector } from 'react-redux';
 import TechCard from './TechCard';
 
 export default function ProjectCard({ project }: { project: Project }) {
-	const language = useSelector((state: RootState) => state.language.language);
+	const language = useSelector(
+		(state: RootState) => state.language.language,
+	);
+
+	const visitSiteText =
+		language === 'en' ? 'Visit Site' : 'Visitar Sitio';
+
 	return (
-		<div className="mt-10 project-card absolute inset-0 mx-auto h-162.5 md:h-175 w-[calc(100%-2rem)] max-w-5xl rounded-3xl border border-white/15 bg-neutral-900/85 backdrop-blur-2xl p-4 sm:p-6 md:p-8 flex flex-col justify-between gap-4 border-flow">
-			<div className="mb-3 inline-flex items-center gap-2">
-				<span className="font-mono text-xs uppercase tracking-widest text-cyan-400">
-					0{project.id} //{' '}
+		<article
+			className="
+				project-card relative mx-auto flex h-auto w-[calc(100%-1rem)]
+				max-w-5xl flex-col gap-4 rounded-3xl border
+				border-white/15 bg-neutral-900/90 p-4 backdrop-blur-2xl
+				border-flow
+				sm:w-[calc(100%-2rem)] sm:gap-5 sm:p-6
+				md:gap-6 md:p-8
+				md:absolute md:inset-x-0 md:top-0
+				md:min-h-[calc(100vh-7rem)]
+			"
+		>
+			{/* Project label and title */}
+			<div className="flex flex-col gap-2">
+				<span className="font-mono text-[10px] uppercase tracking-widest text-cyan-400 sm:text-xs">
+					{String(project.id).padStart(2, '0')} //{' '}
 					{language === 'en' ? 'Project' : 'Proyecto'}
 				</span>
+
+				<h3 className="text-text text-xl font-semibold sm:text-2xl md:text-3xl">
+					{project.name[language]}
+				</h3>
 			</div>
-			<h3 className="text-text text-xl md:text-2xl">
-				{project.name[language]}
-			</h3>
-			<div className="flex flex-col gap-6">
-				<div className=" w-full md:w-auto">
+
+			{/* Project screenshot with hover button */}
+			<div className="flex w-full justify-center">
+				<div className="group relative inline-flex max-w-full overflow-hidden rounded-xl">
 					<Image
 						src={project.screenshot}
-						alt={`${project.name[language]} Screenshot`}
-						width={400}
-						height={300}
-						className="h-64 w-full rounded-xl object-contain md:h-80"
+						alt={`${project.name[language]} screenshot`}
+						width={1200}
+						height={800}
+						sizes="
+							(max-width: 639px) calc(100vw - 4rem),
+							(max-width: 1023px) calc(100vw - 6rem),
+							768px
+						"
+						className="
+							block h-auto w-auto max-w-full
+							max-h-[30vh] object-contain
+							sm:max-h-[35vh]
+							md:max-h-[42vh]
+						"
 					/>
-				</div>
-				<div className=" w-full ">
-					<p className="text-muted text-sm md:text-base leading-relaxed">
-						{project.description[language]}
-					</p>
-					<div className="flex flex-wrap justify-start items-center gap-2 mt-4">
-						{project.tech.map((tech, index) => (
-							<TechCard tech={tech} key={index} />
-						))}
-					</div>
+
+					<a
+						href={project.website}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={`${visitSiteText}: ${project.name[language]}`}
+						className="
+							absolute inset-0 z-10
+							flex items-end justify-center p-4
+							bg-black/40 opacity-100
+							transition-opacity duration-300
+							sm:items-center
+							lg:bg-black/50 lg:opacity-0
+							lg:group-hover:opacity-100
+							focus-visible:outline-2
+							focus-visible:outline-cyan-400
+						"
+					>
+						<span
+							className="
+								inline-flex items-center gap-2
+								rounded-full border border-cyan-300/40
+								bg-gradient-to-r from-blue-500 to-cyan-400
+								px-5 py-2.5 sm:py-3
+								text-sm font-semibold text-white
+								shadow-lg shadow-blue-500/20
+								transition-transform duration-300
+								group-hover:scale-105
+								hover:from-blue-600 hover:to-cyan-500
+							"
+						>
+							{visitSiteText}
+							<span aria-hidden="true">↗</span>
+						</span>
+					</a>
 				</div>
 			</div>
-			{project.website}
-		</div>
+
+			{/* Project description */}
+			<p className="text-muted text-sm leading-relaxed sm:text-base">
+				{project.description[language]}
+			</p>
+
+			{/* Technology stack */}
+			<div className="flex flex-wrap items-center gap-2">
+				{project.tech.map((tech) => (
+					<TechCard tech={tech} key={tech} />
+				))}
+			</div>
+		</article>
 	);
 }
