@@ -1,4 +1,6 @@
 import Landing from '@/components/Projects/Landing';
+import ProjectsCTA from '@/components/Projects/ProjectCta';
+import ProjectsSection from '@/components/Projects/Projects/ProjectsSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -17,6 +19,8 @@ export default function ProjectsPage() {
   return (
     <main>
       <Landing /> 
+      <ProjectsSection />
+      <ProjectsCTA />
     </main>
   );
 }

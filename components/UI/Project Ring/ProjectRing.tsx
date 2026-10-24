@@ -254,7 +254,7 @@ export default function ProjectRing() {
           return (
             <RingCard
               key={project.id}
-              url={project.website}
+              url={project.website.live}
               imgLink={project.screenshot}
               title={project.name[language]}
               index={index}

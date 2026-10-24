@@ -6,8 +6,9 @@ import { useGSAP } from '@gsap/react';
 import ExpandLink from '@/components/UI/Expand Button/ExpandLink';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import ContactButton from '@/components/UI/Contact/ContactButton';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '@/redux/store';
+import { setClientNavigation } from '@/redux/slices/navigationSlice';
 
 if (typeof window !== 'undefined') {
 	gsap.registerPlugin(useGSAP);
@@ -15,16 +16,25 @@ if (typeof window !== 'undefined') {
 
 export default function Landing() {
 	const language = useSelector((state: RootState) => state.language.language);
-	const isEn = language === 'en';
+	const shouldAnimate = useSelector(
+		(state: RootState) => state.navigation.isClientNavigation,
+	);
+	const dispatch = useDispatch();
 
+	const isEn = language === 'en';
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	useGSAP(
 		() => {
+			if (!shouldAnimate) return;
+
 			const tl = gsap.timeline({
 				defaults: {
 					ease: 'power3.out',
 					duration: 0.9,
+				},
+				onComplete: () => {
+					dispatch(setClientNavigation(false));
 				},
 			});
 
@@ -87,8 +97,14 @@ export default function Landing() {
 					},
 					'-=0.35',
 				);
+
+			return () => tl.kill();
 		},
-		{ scope: containerRef },
+		{
+			scope: containerRef,
+			dependencies: [shouldAnimate],
+			revertOnUpdate: true,
+		},
 	);
 
 	return (
@@ -99,11 +115,19 @@ export default function Landing() {
 			>
 				<div className="flex w-full max-w-160 flex-col items-center gap-8">
 					<div className="flex flex-col items-center gap-4 text-center">
-						<h1 className="gsap-title font-heading text-4xl font-bold leading-tight tracking-tight text-white opacity-0 sm:text-5xl md:text-6xl lg:text-7xl">
+						<h1
+							className={`gsap-title font-heading text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl ${
+								shouldAnimate ? 'opacity-0' : ''
+							}`}
+						>
 							{isEn ? "I'm Bryan Degante" : 'Soy Bryan Degante'}
 						</h1>
 
-						<h2 className="gsap-role font-heading text-2xl font-semibold leading-tight text-neutral-200 opacity-0 sm:text-3xl md:text-4xl">
+						<h2
+							className={`gsap-role font-heading text-2xl font-semibold leading-tight text-neutral-200 sm:text-3xl md:text-4xl ${
+								shouldAnimate ? 'opacity-0' : ''
+							}`}
+						>
 							{isEn
 								? 'A Frontend Developer'
 								: 'Desarrollador Frontend'}
@@ -115,7 +139,11 @@ export default function Landing() {
 							</span>
 						</h2>
 
-						<p className="gsap-desc mt-2 max-w-lg font-heading text-base font-normal leading-relaxed text-neutral-400 opacity-0 sm:text-lg lg:text-xl">
+						<p
+							className={`gsap-desc mt-2 max-w-lg font-heading text-base font-normal leading-relaxed text-neutral-400 sm:text-lg lg:text-xl ${
+								shouldAnimate ? 'opacity-0' : ''
+							}`}
+						>
 							{isEn
 								? 'Building responsive interfaces with modern web technologies.'
 								: 'Desarrollo interfaces responsivas con tecnologías modernas.'}
@@ -123,7 +151,7 @@ export default function Landing() {
 					</div>
 
 					<ul className="gsap-actions flex list-none flex-wrap items-center justify-center gap-3">
-						<li className="opacity-0">
+						<li className={shouldAnimate ? 'opacity-0' : ''}>
 							<ExpandLink
 								text="GitHub"
 								icon={
@@ -133,7 +161,7 @@ export default function Landing() {
 							/>
 						</li>
 
-						<li className="opacity-0">
+						<li className={shouldAnimate ? 'opacity-0' : ''}>
 							<ExpandLink
 								text="LinkedIn"
 								icon={
@@ -143,7 +171,7 @@ export default function Landing() {
 							/>
 						</li>
 
-						<li className="opacity-0">
+						<li className={shouldAnimate ? 'opacity-0' : ''}>
 							<ContactButton />
 						</li>
 					</ul>
