@@ -157,7 +157,6 @@ const activeLearning: Skill[] = [
 			id="Skills"
 			className="mx-auto mt-16 w-full max-w-7xl px-6 py-28"
 		>
-			{/* Section header */}
 			<div className="tech-header mb-8 border-b border-white/10 pb-4">
 				<span className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
 					02 {isEn ? '// MY Skill set' : '// MIS HABILIDADES'}
@@ -176,7 +175,6 @@ const activeLearning: Skill[] = [
 				</p>
 			</div>
 
-			{/* Technology categories */}
 			<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
 				{stackCategories.map((category) => (
 					<div
@@ -231,7 +229,6 @@ const activeLearning: Skill[] = [
 				))}
 			</div>
 
-			{/* Currently learning banner */}
 			<div className="tech-learning mt-5 rounded-2xl border border-blue-500/20 bg-linear-to-r from-blue-950/30 via-neutral-900/60 to-neutral-900/40 p-5 backdrop-blur-xl sm:p-6">
 				<div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
 					<div className="max-w-xl">

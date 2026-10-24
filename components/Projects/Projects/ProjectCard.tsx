@@ -1,10 +1,10 @@
-
-'use client';
+ 'use client';
 
 import type { Project } from '@/data/ProjectData';
 import type { RootState } from '@/redux/store';
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
+import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import TechCard from './TechCard';
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -40,7 +40,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 				</h3>
 			</div>
 
-			{/* Project screenshot with hover button */}
+			{/* Project screenshot with Visit Site overlay */}
 			<div className="flex w-full justify-center">
 				<div className="group relative inline-flex max-w-full overflow-hidden rounded-xl">
 					<Image
@@ -62,7 +62,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 					/>
 
 					<a
-						href={project.website}
+						href={project.website.live}
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label={`${visitSiteText}: ${project.name[language]}`}
@@ -82,7 +82,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 							className="
 								inline-flex items-center gap-2
 								rounded-full border border-cyan-300/40
-								bg-gradient-to-r from-blue-500 to-cyan-400
+								bg-linear-to-r from-blue-500 to-cyan-400
 								px-5 py-2.5 sm:py-3
 								text-sm font-semibold text-white
 								shadow-lg shadow-blue-500/20
@@ -102,6 +102,32 @@ export default function ProjectCard({ project }: { project: Project }) {
 			<p className="text-muted text-sm leading-relaxed sm:text-base">
 				{project.description[language]}
 			</p>
+
+			{/* GitHub repository link — only shown when a URL exists */}
+			{project.website.repo && (
+				<a
+					href={project.website.repo}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={`View ${project.name[language]} source code on GitHub`}
+					className="
+						inline-flex w-fit items-center gap-2
+						text-sm font-medium text-neutral-300
+						transition-colors duration-300
+						hover:text-blue-400
+						focus-visible:outline-2
+						focus-visible:outline-blue-400
+					"
+				>
+					<FiGithub className="h-4 w-4" />
+					<span>
+						{language === 'en'
+							? 'View Source Code'
+							: 'Ver Código Fuente'}
+					</span>
+					<FiExternalLink className="h-3.5 w-3.5" />
+				</a>
+			)}
 
 			{/* Technology stack */}
 			<div className="flex flex-wrap items-center gap-2">

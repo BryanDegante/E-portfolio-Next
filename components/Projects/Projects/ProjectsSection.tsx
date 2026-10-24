@@ -15,6 +15,66 @@ export default function ProjectsSection() {
 
 		const mm = gsap.matchMedia();
 
+		mm.add('(max-width: 767px)', () => {
+			const cards = gsap.utils.toArray<HTMLElement>(
+				'.project-card',
+				sectionRef.current,
+			);
+
+			cards.forEach((card) => {
+				gsap.set(card, {
+					opacity: 0,
+					y: 35,
+				});
+
+				ScrollTrigger.create({
+					trigger: card,
+					start: 'top 88%',
+					end: 'bottom 12%',
+
+					onEnter: () => {
+						gsap.to(card, {
+							opacity: 1,
+							y: 0,
+							duration: 0.65,
+							ease: 'power2.out',
+							overwrite: true,
+						});
+					},
+
+					onEnterBack: () => {
+						gsap.to(card, {
+							opacity: 1,
+							y: 0,
+							duration: 0.5,
+							ease: 'power2.out',
+							overwrite: true,
+						});
+					},
+
+					onLeave: () => {
+						gsap.to(card, {
+							opacity: 0,
+							y: -25,
+							duration: 0.45,
+							ease: 'power2.in',
+							overwrite: true,
+						});
+					},
+
+					onLeaveBack: () => {
+						gsap.to(card, {
+							opacity: 0,
+							y: 35,
+							duration: 0.35,
+							ease: 'power2.out',
+							overwrite: true,
+						});
+					},
+				});
+			});
+		});
+
 		mm.add('(min-width: 768px)', () => {
 			const cards = gsap.utils.toArray<HTMLElement>(
 				'.project-card',
@@ -78,7 +138,7 @@ export default function ProjectsSection() {
 				className="
 					relative flex flex-col gap-6
 					sm:gap-8
-					md:sticky md:top-[100px]
+					md:sticky md:top-25
 					md:block md:h-[calc(100vh-100px)]
 				"
 			>
