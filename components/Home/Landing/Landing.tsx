@@ -132,7 +132,7 @@ export default function Landing() {
 								? 'A Frontend Developer'
 								: 'Desarrollador Frontend'}
 							<br />
-							<span className="text__color--blue">
+							<span className="text__color--blue-static">
 								{isEn
 									? 'Focused on Clean UI & Smooth Animations'
 									: 'Enfocado en Interfaces Limpias y Animaciones Fluidas'}
